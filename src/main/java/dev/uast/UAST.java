@@ -29,10 +29,9 @@ public class UAST {
             Map.entry("..", "॥"),
             Map.entry("au", "ã")
     ));
+    public static final Map<String, Map<String, List<Function<String, String>>>> convertor = builder();
 
-    public final Map<String, Map<String, List<Function<String, String>>>> convertor;
-
-    UAST() {
+    private static Map<String, Map<String, List<Function<String, String>>>> builder() {
         var builder = new HashMap<LangList, Map<FuncList, Function<String, String>>>();
 
         for (var i : LangList.values()) {
@@ -46,7 +45,7 @@ public class UAST {
             ));
         }
 
-        convertor = Map.ofEntries(
+        return Map.ofEntries(
                 Map.entry("raw", Map.ofEntries(Map.entry(
                         "iast",
                         List.of(builder.get(LangList.SA)
@@ -164,13 +163,10 @@ public class UAST {
                                         "iast",
                                         List.of(UAST::SLPToIAST)
                                 ),
-                                Map.entry(
-                                        "uast",
-                                        List.of(
-                                                UAST::SLPToIAST,
-                                                UAST::IASTToUAST
-                                        )
-                                ),
+                                Map.entry("uast", List.of(
+                                        UAST::SLPToIAST,
+                                        UAST::IASTToUAST
+                                )),
                                 Map.entry("devanagari", List.of(
                                         UAST::SLPToIAST,
                                         UAST::IASTToUAST,
@@ -556,7 +552,7 @@ public class UAST {
         );
     }
 
-    static Function<String, String> createHandleUnicode(LangList langList) {
+    private static Function<String, String> createHandleUnicode(LangList langList) {
         langDict.putAll(switch (langList) {
             case SA -> Map.ofEntries(
                     Map.entry("0", "०"),
@@ -707,7 +703,7 @@ public class UAST {
         };
     }
 
-    static Function<String, String> createScriptFunction(LangList lang) {
+    private static Function<String, String> createScriptFunction(LangList lang) {
         var obj = Data.scripts.get(lang);
 
         return (String s) -> {
@@ -730,7 +726,7 @@ public class UAST {
         };
     }
 
-    static String dataToIAST(String data) {
+    private static String dataToIAST(String data) {
         data = data.replaceAll("[\\[\\]{}^~@#$%&*_;.<>\\n\\v\\t\\r\\f]", "");
 
         var ans = new ArrayList<String>(data.length());
@@ -873,7 +869,7 @@ public class UAST {
         return String.join("", ans);
     }
 
-    static String IASTToUAST(String data) {
+    private static String IASTToUAST(String data) {
         data = data.replaceAll("[\\[\\]{}^~@#$%&*\\-_;<>]", "");
 
         var str = new ArrayList<String>();
@@ -1038,7 +1034,7 @@ public class UAST {
         return String.join("", fin);
     }
 
-    static Function<String, String> createDataFunction(LangList lang) {
+    private static Function<String, String> createDataFunction(LangList lang) {
         var obj = Data.charDict.get(lang);
 
         return (String data) -> {
@@ -1131,7 +1127,7 @@ public class UAST {
         };
     }
 
-    static String devanagariToUAST(String data) {
+    private static String devanagariToUAST(String data) {
         var str = new ArrayList<String>();
         for (var v : data.toCharArray()) {
             str.add(String.valueOf(v));
@@ -1182,7 +1178,7 @@ public class UAST {
         return String.join("", arr);
     }
 
-    static String SLPToIAST(String data) {
+    private static String SLPToIAST(String data) {
         final var slpDataDict = Data.slpDataDict;
         var str = new ArrayList<String>(data.length());
 
