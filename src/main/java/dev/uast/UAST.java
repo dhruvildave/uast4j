@@ -164,10 +164,13 @@ public class UAST {
                                         "iast",
                                         List.of(UAST::SLPToIAST)
                                 ),
-                                Map.entry("uast", List.of(
-                                        UAST::SLPToIAST,
-                                        UAST::IASTToUAST
-                                )),
+                                Map.entry(
+                                        "uast",
+                                        List.of(
+                                                UAST::SLPToIAST,
+                                                UAST::IASTToUAST
+                                        )
+                                ),
                                 Map.entry("devanagari", List.of(
                                         UAST::SLPToIAST,
                                         UAST::IASTToUAST,
@@ -225,7 +228,331 @@ public class UAST {
                                                 .get(FuncList.DataFunction)
                                 ))
                         )
-                )
+                ),
+                Map.entry(
+                        "iast",
+                        Map.ofEntries(
+                                Map.entry(
+                                        "uast",
+                                        List.of(UAST::IASTToUAST)
+                                ),
+                                Map.entry(
+                                        "devanagari",
+                                        List.of(
+                                                UAST::IASTToUAST,
+                                                builder.get(LangList.SA)
+                                                        .get(FuncList.HandleUnicode),
+                                                builder.get(LangList.SA)
+                                                        .get(FuncList.DataFunction)
+                                        )
+                                ),
+                                Map.entry("gu", List.of(
+                                        UAST::IASTToUAST,
+                                        builder.get(LangList.GU)
+                                                .get(FuncList.HandleUnicode),
+                                        builder.get(LangList.GU)
+                                                .get(FuncList.DataFunction)
+                                )),
+                                Map.entry("or", List.of(
+                                        UAST::IASTToUAST,
+                                        builder.get(LangList.OR)
+                                                .get(FuncList.HandleUnicode),
+                                        builder.get(LangList.OR)
+                                                .get(FuncList.DataFunction)
+                                )),
+                                Map.entry("ml", List.of(
+                                        UAST::IASTToUAST,
+                                        builder.get(LangList.ML)
+                                                .get(FuncList.HandleUnicode),
+                                        builder.get(LangList.ML)
+                                                .get(FuncList.DataFunction)
+                                )),
+                                Map.entry("ta", List.of(
+                                        UAST::IASTToUAST,
+                                        builder.get(LangList.TA)
+                                                .get(FuncList.HandleUnicode),
+                                        builder.get(LangList.TA)
+                                                .get(FuncList.DataFunction)
+                                )),
+                                Map.entry("te", List.of(
+                                        UAST::IASTToUAST,
+                                        builder.get(LangList.TE)
+                                                .get(FuncList.HandleUnicode),
+                                        builder.get(LangList.TE)
+                                                .get(FuncList.DataFunction)
+                                ))
+                        )
+                ),
+                Map.entry("gu", Map.ofEntries(Map.entry(
+                        "devanagari",
+                        List.of(builder.get(LangList.GU)
+                                .get(FuncList.ScriptToDevanagari))
+                ), Map.entry("uast", List.of(
+                        builder.get(LangList.GU)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST
+                )), Map.entry("iast", List.of(
+                        builder.get(LangList.GU)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.SA).get(FuncList.HandleUnicode),
+                        UAST::dataToIAST
+                )), Map.entry("or", List.of(
+                        builder.get(LangList.GU)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.OR).get(FuncList.HandleUnicode),
+                        builder.get(LangList.OR).get(FuncList.DataFunction)
+                )), Map.entry("kn", List.of(
+                        builder.get(LangList.GU)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.KN).get(FuncList.HandleUnicode),
+                        builder.get(LangList.KN).get(FuncList.DataFunction)
+                )), Map.entry("te", List.of(
+                        builder.get(LangList.GU)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.TE).get(FuncList.HandleUnicode),
+                        builder.get(LangList.TE).get(FuncList.DataFunction)
+                )), Map.entry("ta", List.of(
+                        builder.get(LangList.GU)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.TA).get(FuncList.HandleUnicode),
+                        builder.get(LangList.TA).get(FuncList.DataFunction)
+                )), Map.entry("ml", List.of(
+                        builder.get(LangList.GU)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.ML).get(FuncList.HandleUnicode),
+                        builder.get(LangList.ML).get(FuncList.DataFunction)
+                )))),
+                Map.entry("ml", Map.ofEntries(Map.entry(
+                        "devanagari",
+                        List.of(builder.get(LangList.ML)
+                                .get(FuncList.ScriptToDevanagari))
+                ), Map.entry("uast", List.of(
+                        builder.get(LangList.ML)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST
+                )), Map.entry("iast", List.of(
+                        builder.get(LangList.ML)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.SA).get(FuncList.HandleUnicode),
+                        UAST::dataToIAST
+                )), Map.entry("or", List.of(
+                        builder.get(LangList.ML)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.OR).get(FuncList.HandleUnicode),
+                        builder.get(LangList.OR).get(FuncList.DataFunction)
+                )), Map.entry("kn", List.of(
+                        builder.get(LangList.ML)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.KN).get(FuncList.HandleUnicode),
+                        builder.get(LangList.KN).get(FuncList.DataFunction)
+                )), Map.entry("te", List.of(
+                        builder.get(LangList.ML)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.TE).get(FuncList.HandleUnicode),
+                        builder.get(LangList.TE).get(FuncList.DataFunction)
+                )), Map.entry("ta", List.of(
+                        builder.get(LangList.ML)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.TA).get(FuncList.HandleUnicode),
+                        builder.get(LangList.TA).get(FuncList.DataFunction)
+                )), Map.entry("gu", List.of(
+                        builder.get(LangList.ML)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.GU).get(FuncList.HandleUnicode),
+                        builder.get(LangList.GU).get(FuncList.DataFunction)
+                )))),
+                Map.entry("or", Map.ofEntries(Map.entry(
+                        "devanagari",
+                        List.of(builder.get(LangList.OR)
+                                .get(FuncList.ScriptToDevanagari))
+                ), Map.entry("uast", List.of(
+                        builder.get(LangList.OR)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST
+                )), Map.entry("iast", List.of(
+                        builder.get(LangList.OR)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.SA).get(FuncList.HandleUnicode),
+                        UAST::dataToIAST
+                )), Map.entry("ml", List.of(
+                        builder.get(LangList.OR)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.ML).get(FuncList.HandleUnicode),
+                        builder.get(LangList.ML).get(FuncList.DataFunction)
+                )), Map.entry("kn", List.of(
+                        builder.get(LangList.OR)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.KN).get(FuncList.HandleUnicode),
+                        builder.get(LangList.KN).get(FuncList.DataFunction)
+                )), Map.entry("te", List.of(
+                        builder.get(LangList.OR)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.TE).get(FuncList.HandleUnicode),
+                        builder.get(LangList.TE).get(FuncList.DataFunction)
+                )), Map.entry("ta", List.of(
+                        builder.get(LangList.OR)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.TA).get(FuncList.HandleUnicode),
+                        builder.get(LangList.TA).get(FuncList.DataFunction)
+                )), Map.entry("gu", List.of(
+                        builder.get(LangList.OR)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.GU).get(FuncList.HandleUnicode),
+                        builder.get(LangList.GU).get(FuncList.DataFunction)
+                )))),
+                Map.entry("kn", Map.ofEntries(Map.entry(
+                        "devanagari",
+                        List.of(builder.get(LangList.KN)
+                                .get(FuncList.ScriptToDevanagari))
+                ), Map.entry("uast", List.of(
+                        builder.get(LangList.KN)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST
+                )), Map.entry("iast", List.of(
+                        builder.get(LangList.KN)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.SA).get(FuncList.HandleUnicode),
+                        UAST::dataToIAST
+                )), Map.entry("ml", List.of(
+                        builder.get(LangList.KN)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.ML).get(FuncList.HandleUnicode),
+                        builder.get(LangList.ML).get(FuncList.DataFunction)
+                )), Map.entry("or", List.of(
+                        builder.get(LangList.KN)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.OR).get(FuncList.HandleUnicode),
+                        builder.get(LangList.OR).get(FuncList.DataFunction)
+                )), Map.entry("te", List.of(
+                        builder.get(LangList.KN)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.TE).get(FuncList.HandleUnicode),
+                        builder.get(LangList.TE).get(FuncList.DataFunction)
+                )), Map.entry("ta", List.of(
+                        builder.get(LangList.KN)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.TA).get(FuncList.HandleUnicode),
+                        builder.get(LangList.TA).get(FuncList.DataFunction)
+                )), Map.entry("gu", List.of(
+                        builder.get(LangList.KN)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.GU).get(FuncList.HandleUnicode),
+                        builder.get(LangList.GU).get(FuncList.DataFunction)
+                )))),
+                Map.entry("ta", Map.ofEntries(Map.entry(
+                        "devanagari",
+                        List.of(builder.get(LangList.TA)
+                                .get(FuncList.ScriptToDevanagari))
+                ), Map.entry("uast", List.of(
+                        builder.get(LangList.TA)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST
+                )), Map.entry("iast", List.of(
+                        builder.get(LangList.TA)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.SA).get(FuncList.HandleUnicode),
+                        UAST::dataToIAST
+                )), Map.entry("ml", List.of(
+                        builder.get(LangList.TA)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.ML).get(FuncList.HandleUnicode),
+                        builder.get(LangList.ML).get(FuncList.DataFunction)
+                )), Map.entry("or", List.of(
+                        builder.get(LangList.TA)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.OR).get(FuncList.HandleUnicode),
+                        builder.get(LangList.OR).get(FuncList.DataFunction)
+                )), Map.entry("te", List.of(
+                        builder.get(LangList.TA)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.TE).get(FuncList.HandleUnicode),
+                        builder.get(LangList.TE).get(FuncList.DataFunction)
+                )), Map.entry("kn", List.of(
+                        builder.get(LangList.TA)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.KN).get(FuncList.HandleUnicode),
+                        builder.get(LangList.KN).get(FuncList.DataFunction)
+                )), Map.entry("gu", List.of(
+                        builder.get(LangList.TA)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.GU).get(FuncList.HandleUnicode),
+                        builder.get(LangList.GU).get(FuncList.DataFunction)
+                )))),
+                Map.entry("te", Map.ofEntries(Map.entry(
+                        "devanagari",
+                        List.of(builder.get(LangList.TE)
+                                .get(FuncList.ScriptToDevanagari))
+                ), Map.entry("uast", List.of(
+                        builder.get(LangList.TE)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST
+                )), Map.entry("iast", List.of(
+                        builder.get(LangList.TE)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.SA).get(FuncList.HandleUnicode),
+                        UAST::dataToIAST
+                )), Map.entry("ml", List.of(
+                        builder.get(LangList.TE)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.ML).get(FuncList.HandleUnicode),
+                        builder.get(LangList.ML).get(FuncList.DataFunction)
+                )), Map.entry("or", List.of(
+                        builder.get(LangList.TE)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.OR).get(FuncList.HandleUnicode),
+                        builder.get(LangList.OR).get(FuncList.DataFunction)
+                )), Map.entry("ta", List.of(
+                        builder.get(LangList.TE)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.TA).get(FuncList.HandleUnicode),
+                        builder.get(LangList.TA).get(FuncList.DataFunction)
+                )), Map.entry("kn", List.of(
+                        builder.get(LangList.TE)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.KN).get(FuncList.HandleUnicode),
+                        builder.get(LangList.KN).get(FuncList.DataFunction)
+                )), Map.entry("gu", List.of(
+                        builder.get(LangList.TE)
+                                .get(FuncList.ScriptToDevanagari),
+                        UAST::devanagariToUAST,
+                        builder.get(LangList.GU).get(FuncList.HandleUnicode),
+                        builder.get(LangList.GU).get(FuncList.DataFunction)
+                ))))
         );
     }
 
