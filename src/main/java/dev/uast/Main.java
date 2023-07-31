@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        var x = "k/a//su//i/ vi/su/van/a/tha..\nvi/sl//nl/u";
+        var x = "ūrdhvamūlam adhaḥśākham";
 
-        var fs = UAST.convertor.get("raw").get("devanagari");
+        var fs = UAST.convertor.get("iast").get("devanagari");
         for (var l : x.split("\\n")) {
             var s = l.split(" ");
             var arr = new ArrayList<String>(s.length);
