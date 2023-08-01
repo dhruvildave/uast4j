@@ -8,29 +8,6 @@ import java.util.Set;
 import java.util.function.Function;
 
 public class UAST {
-    static Map<String, String> langDict =
-            new HashMap<>(
-                    Map.ofEntries(
-                            Map.entry("a", "ā"),
-                            Map.entry("i", "ī"),
-                            Map.entry("u", "ū"),
-                            Map.entry("r", "ṛ"),
-                            Map.entry("ru", "ṝ"),
-                            Map.entry("l", "ḷ"),
-                            Map.entry("lu", "ḹ"),
-                            Map.entry("ll", "ḻ"),
-                            Map.entry("t", "ṭ"),
-                            Map.entry("d", "ḍ"),
-                            Map.entry("m", "ṃ"),
-                            Map.entry("h", "ḥ"),
-                            Map.entry("n", "ñ"),
-                            Map.entry("nu", "ṅ"),
-                            Map.entry("nl", "ṇ"),
-                            Map.entry("su", "ś"),
-                            Map.entry("sl", "ṣ"),
-                            Map.entry(".", "।"),
-                            Map.entry("..", "॥"),
-                            Map.entry("au", "ã")));
     public static final Map<String, Map<String, List<Function<String, String>>>> convertor =
             builder();
 
@@ -174,6 +151,13 @@ public class UAST {
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TE)
+                                                        .get(FuncList.DataFunction))),
+                                Map.entry(
+                                        "kn",
+                                        List.of(
+                                                builder.get(LangList.KN)
+                                                        .get(FuncList.HandleUnicode),
+                                                builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
                                         "ml",
@@ -352,6 +336,14 @@ public class UAST {
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TA)
+                                                        .get(FuncList.DataFunction))),
+                                Map.entry(
+                                        "kn",
+                                        List.of(
+                                                UAST::IASTToUAST,
+                                                builder.get(LangList.KN)
+                                                        .get(FuncList.HandleUnicode),
+                                                builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
                                         "te",
@@ -802,6 +794,7 @@ public class UAST {
     }
 
     private static Function<String, String> createHandleUnicode(LangList langList) {
+        var langDict = new HashMap<>(Data.unicodeMap);
         langDict.putAll(
                 switch (langList) {
                     case SA -> Map.ofEntries(

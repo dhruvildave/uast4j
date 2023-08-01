@@ -1,6 +1,5 @@
 package dev.uast;
 
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -28,11 +27,9 @@ public interface Data {
                     Map.entry("..", "॥"),
                     Map.entry("au", "ã"));
 
-    HashSet<String> unAspiratedConstants =
-            new HashSet<>(Set.of("b", "c", "d", "g", "j", "k", "p", "t", "ḍ", "ṭ"));
+    Set<String> unAspiratedConstants = Set.of("b", "c", "d", "g", "j", "k", "p", "t", "ḍ", "ṭ");
 
-    HashSet<String> allowedSymbols =
-            new HashSet<>(Set.of(",", "?", "!", "\"", "-", ":", "(", ")", "=", "|"));
+    Set<String> allowedSymbols = Set.of(",", "?", "!", "\"", "-", ":", "(", ")", "=", "|");
 
     Map<String, String> iastDataDict =
             Map.ofEntries(
@@ -264,7 +261,7 @@ public interface Data {
                                                     Map.entry("ṃ", "ં"),
                                                     Map.entry("ḥ", "ઃ"),
                                                     Map.entry("ã", "ઁ"),
-                                                    Map.entry("-", "्"))),
+                                                    Map.entry("-", "્"))),
                                     Map.entry(
                                             LangMap.CONSONANTS,
                                             Map.ofEntries(
