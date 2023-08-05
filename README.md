@@ -8,7 +8,7 @@ To install this program, you will need to install [Java 17 or above](https://ado
 After that, just run
 
 ```bash
-./gradlew -i jar
+./gradlew clean jar
 ```
 
 To run,
