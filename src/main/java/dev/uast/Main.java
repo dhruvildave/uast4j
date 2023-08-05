@@ -7,10 +7,10 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
-    static final Set<String> fromSchemes =
+    private static final Set<String> fromSchemes =
             Set.of("uast", "raw", "devanagari", "iast", "slp", "gu", "or", "ta", "te", "ml", "kn");
 
-    static final Set<String> toSchemes =
+    private static final Set<String> toSchemes =
             Set.of("uast", "devanagari", "iast", "gu", "or", "ta", "te", "ml", "kn");
 
     public static void main(String[] args) {
