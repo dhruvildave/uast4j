@@ -7,10 +7,10 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
-    private static final Set<Scheme> FROM_SCHEMES =
+    private static final Set<Scheme> fromSchemes =
             Set.of(Scheme.UAST, Scheme.RAW, Scheme.DEVANĀGARĪ, Scheme.IAST, Scheme.SLP, Scheme.GU, Scheme.OR, Scheme.TA, Scheme.TE, Scheme.ML, Scheme.KN);
 
-    private static final Set<Scheme> TO_SCHEMES =
+    private static final Set<Scheme> toSchemes =
             Set.of(Scheme.UAST, Scheme.DEVANĀGARĪ, Scheme.IAST, Scheme.GU, Scheme.OR, Scheme.TA, Scheme.TE, Scheme.ML, Scheme.KN);
 
     public static void main(String[] args) {
@@ -29,7 +29,7 @@ public class Main {
             args[i + 1] = args[i + 1].toUpperCase();
             var s = Scheme.valueOf(args[i + 1]);
             if (args[i].equals("-to")) {
-                if (!TO_SCHEMES.contains(s)) {
+                if (!toSchemes.contains(s)) {
                     throw new IllegalArgumentException("invalid value for `to`");
                 }
                 to = s;
@@ -37,7 +37,7 @@ public class Main {
             }
 
             if (args[i].equals("-from")) {
-                if (!FROM_SCHEMES.contains(s)) {
+                if (!fromSchemes.contains(s)) {
                     throw new IllegalArgumentException("invalid value for `from`");
                 }
                 from = s;
