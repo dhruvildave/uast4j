@@ -8,10 +8,10 @@ import java.util.Set;
 import java.util.function.Function;
 
 public class UAST {
-    public static final Map<String, Map<String, List<Function<String, String>>>> convertor =
+    public static final Map<Scheme, Map<Scheme, List<Function<String, String>>>> convertor =
             builder();
 
-    private static Map<String, Map<String, List<Function<String, String>>>> builder() {
+    private static Map<Scheme, Map<Scheme, List<Function<String, String>>>> builder() {
         var builder = new HashMap<LangList, Map<FuncList, Function<String, String>>>();
 
         for (var i : LangList.values()) {
@@ -25,15 +25,15 @@ public class UAST {
 
         return Map.ofEntries(
                 Map.entry(
-                        "raw",
+                        Scheme.RAW,
                         Map.ofEntries(
                                 Map.entry(
-                                        "iast",
+                                        Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode))),
                                 Map.entry(
-                                        "devanagari",
+                                        Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
@@ -43,13 +43,13 @@ public class UAST {
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "uast",
+                                        Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::IASTToUAST)),
                                 Map.entry(
-                                        "gu",
+                                        Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.HandleUnicode),
@@ -59,7 +59,7 @@ public class UAST {
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "or",
+                                        Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.HandleUnicode),
@@ -69,7 +69,7 @@ public class UAST {
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "kn",
+                                        Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.HandleUnicode),
@@ -79,7 +79,7 @@ public class UAST {
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ml",
+                                        Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.HandleUnicode),
@@ -89,7 +89,7 @@ public class UAST {
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ta",
+                                        Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.HandleUnicode),
@@ -99,7 +99,7 @@ public class UAST {
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "te",
+                                        Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.HandleUnicode),
@@ -109,76 +109,76 @@ public class UAST {
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.DataFunction))))),
                 Map.entry(
-                        "uast",
+                        Scheme.UAST,
                         Map.ofEntries(
                                 Map.entry(
-                                        "devanagari",
+                                        Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "iast",
+                                        Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
                                 Map.entry(
-                                        "gu",
+                                        Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "or",
+                                        Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ta",
+                                        Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "te",
+                                        Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "kn",
+                                        Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ml",
+                                        Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.DataFunction))))),
                 Map.entry(
-                        "devanagari",
+                        Scheme.DEVANĀGARĪ,
                         Map.ofEntries(
-                                Map.entry("uast", List.of(UAST::devanagariToUAST)),
+                                Map.entry(Scheme.UAST, List.of(UAST::devanagariToUAST)),
                                 Map.entry(
-                                        "iast",
+                                        Scheme.IAST,
                                         List.of(
                                                 UAST::devanagariToUAST,
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
                                 Map.entry(
-                                        "gu",
+                                        Scheme.GU,
                                         List.of(
                                                 UAST::devanagariToUAST,
                                                 builder.get(LangList.GU)
@@ -186,7 +186,7 @@ public class UAST {
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "or",
+                                        Scheme.OR,
                                         List.of(
                                                 UAST::devanagariToUAST,
                                                 builder.get(LangList.OR)
@@ -194,7 +194,7 @@ public class UAST {
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "kn",
+                                        Scheme.KN,
                                         List.of(
                                                 UAST::devanagariToUAST,
                                                 builder.get(LangList.KN)
@@ -202,7 +202,7 @@ public class UAST {
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "te",
+                                        Scheme.TE,
                                         List.of(
                                                 UAST::devanagariToUAST,
                                                 builder.get(LangList.TE)
@@ -210,7 +210,7 @@ public class UAST {
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ta",
+                                        Scheme.TA,
                                         List.of(
                                                 UAST::devanagariToUAST,
                                                 builder.get(LangList.TA)
@@ -218,7 +218,7 @@ public class UAST {
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ml",
+                                        Scheme.ML,
                                         List.of(
                                                 UAST::devanagariToUAST,
                                                 builder.get(LangList.ML)
@@ -226,12 +226,12 @@ public class UAST {
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.DataFunction))))),
                 Map.entry(
-                        "slp",
+                        Scheme.SLP,
                         Map.ofEntries(
-                                Map.entry("iast", List.of(UAST::SLPToIAST)),
-                                Map.entry("uast", List.of(UAST::SLPToIAST, UAST::IASTToUAST)),
+                                Map.entry(Scheme.IAST, List.of(UAST::SLPToIAST)),
+                                Map.entry(Scheme.UAST, List.of(UAST::SLPToIAST, UAST::IASTToUAST)),
                                 Map.entry(
-                                        "devanagari",
+                                        Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 UAST::SLPToIAST,
                                                 UAST::IASTToUAST,
@@ -240,7 +240,7 @@ public class UAST {
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "gu",
+                                        Scheme.GU,
                                         List.of(
                                                 UAST::SLPToIAST,
                                                 UAST::IASTToUAST,
@@ -249,7 +249,7 @@ public class UAST {
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "or",
+                                        Scheme.OR,
                                         List.of(
                                                 UAST::SLPToIAST,
                                                 UAST::IASTToUAST,
@@ -258,7 +258,7 @@ public class UAST {
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "kn",
+                                        Scheme.KN,
                                         List.of(
                                                 UAST::SLPToIAST,
                                                 UAST::IASTToUAST,
@@ -267,7 +267,7 @@ public class UAST {
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ta",
+                                        Scheme.TA,
                                         List.of(
                                                 UAST::SLPToIAST,
                                                 UAST::IASTToUAST,
@@ -276,7 +276,7 @@ public class UAST {
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "te",
+                                        Scheme.TE,
                                         List.of(
                                                 UAST::SLPToIAST,
                                                 UAST::IASTToUAST,
@@ -285,7 +285,7 @@ public class UAST {
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ml",
+                                        Scheme.ML,
                                         List.of(
                                                 UAST::SLPToIAST,
                                                 UAST::IASTToUAST,
@@ -294,11 +294,11 @@ public class UAST {
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.DataFunction))))),
                 Map.entry(
-                        "iast",
+                        Scheme.IAST,
                         Map.ofEntries(
-                                Map.entry("uast", List.of(UAST::IASTToUAST)),
+                                Map.entry(Scheme.UAST, List.of(UAST::IASTToUAST)),
                                 Map.entry(
-                                        "devanagari",
+                                        Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 UAST::IASTToUAST,
                                                 builder.get(LangList.SA)
@@ -306,7 +306,7 @@ public class UAST {
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "gu",
+                                        Scheme.GU,
                                         List.of(
                                                 UAST::IASTToUAST,
                                                 builder.get(LangList.GU)
@@ -314,7 +314,7 @@ public class UAST {
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "or",
+                                        Scheme.OR,
                                         List.of(
                                                 UAST::IASTToUAST,
                                                 builder.get(LangList.OR)
@@ -322,7 +322,7 @@ public class UAST {
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ml",
+                                        Scheme.ML,
                                         List.of(
                                                 UAST::IASTToUAST,
                                                 builder.get(LangList.ML)
@@ -330,7 +330,7 @@ public class UAST {
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ta",
+                                        Scheme.TA,
                                         List.of(
                                                 UAST::IASTToUAST,
                                                 builder.get(LangList.TA)
@@ -338,7 +338,7 @@ public class UAST {
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "kn",
+                                        Scheme.KN,
                                         List.of(
                                                 UAST::IASTToUAST,
                                                 builder.get(LangList.KN)
@@ -346,7 +346,7 @@ public class UAST {
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "te",
+                                        Scheme.TE,
                                         List.of(
                                                 UAST::IASTToUAST,
                                                 builder.get(LangList.TE)
@@ -354,21 +354,21 @@ public class UAST {
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.DataFunction))))),
                 Map.entry(
-                        "gu",
+                        Scheme.GU,
                         Map.ofEntries(
                                 Map.entry(
-                                        "devanagari",
+                                        Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.ScriptToDevanagari))),
                                 Map.entry(
-                                        "uast",
+                                        Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.ScriptToDevanagari),
                                                 UAST::devanagariToUAST)),
                                 Map.entry(
-                                        "iast",
+                                        Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -377,7 +377,7 @@ public class UAST {
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
                                 Map.entry(
-                                        "or",
+                                        Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -387,7 +387,7 @@ public class UAST {
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "kn",
+                                        Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -397,7 +397,7 @@ public class UAST {
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "te",
+                                        Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -407,7 +407,7 @@ public class UAST {
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ta",
+                                        Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -417,7 +417,7 @@ public class UAST {
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ml",
+                                        Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -427,21 +427,21 @@ public class UAST {
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.DataFunction))))),
                 Map.entry(
-                        "ml",
+                        Scheme.ML,
                         Map.ofEntries(
                                 Map.entry(
-                                        "devanagari",
+                                        Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.ScriptToDevanagari))),
                                 Map.entry(
-                                        "uast",
+                                        Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.ScriptToDevanagari),
                                                 UAST::devanagariToUAST)),
                                 Map.entry(
-                                        "iast",
+                                        Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -450,7 +450,7 @@ public class UAST {
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
                                 Map.entry(
-                                        "or",
+                                        Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -460,7 +460,7 @@ public class UAST {
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "kn",
+                                        Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -470,7 +470,7 @@ public class UAST {
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "te",
+                                        Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -480,7 +480,7 @@ public class UAST {
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ta",
+                                        Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -490,7 +490,7 @@ public class UAST {
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "gu",
+                                        Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -500,21 +500,21 @@ public class UAST {
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.DataFunction))))),
                 Map.entry(
-                        "or",
+                        Scheme.OR,
                         Map.ofEntries(
                                 Map.entry(
-                                        "devanagari",
+                                        Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.ScriptToDevanagari))),
                                 Map.entry(
-                                        "uast",
+                                        Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.ScriptToDevanagari),
                                                 UAST::devanagariToUAST)),
                                 Map.entry(
-                                        "iast",
+                                        Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -523,7 +523,7 @@ public class UAST {
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
                                 Map.entry(
-                                        "ml",
+                                        Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -533,7 +533,7 @@ public class UAST {
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "kn",
+                                        Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -543,7 +543,7 @@ public class UAST {
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "te",
+                                        Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -553,7 +553,7 @@ public class UAST {
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ta",
+                                        Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -563,7 +563,7 @@ public class UAST {
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "gu",
+                                        Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -573,21 +573,21 @@ public class UAST {
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.DataFunction))))),
                 Map.entry(
-                        "kn",
+                        Scheme.KN,
                         Map.ofEntries(
                                 Map.entry(
-                                        "devanagari",
+                                        Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.ScriptToDevanagari))),
                                 Map.entry(
-                                        "uast",
+                                        Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.ScriptToDevanagari),
                                                 UAST::devanagariToUAST)),
                                 Map.entry(
-                                        "iast",
+                                        Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -596,7 +596,7 @@ public class UAST {
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
                                 Map.entry(
-                                        "ml",
+                                        Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -606,7 +606,7 @@ public class UAST {
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "or",
+                                        Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -616,7 +616,7 @@ public class UAST {
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "te",
+                                        Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -626,7 +626,7 @@ public class UAST {
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ta",
+                                        Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -636,7 +636,7 @@ public class UAST {
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "gu",
+                                        Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -646,21 +646,21 @@ public class UAST {
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.DataFunction))))),
                 Map.entry(
-                        "ta",
+                        Scheme.TA,
                         Map.ofEntries(
                                 Map.entry(
-                                        "devanagari",
+                                        Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.ScriptToDevanagari))),
                                 Map.entry(
-                                        "uast",
+                                        Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.ScriptToDevanagari),
                                                 UAST::devanagariToUAST)),
                                 Map.entry(
-                                        "iast",
+                                        Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -669,7 +669,7 @@ public class UAST {
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
                                 Map.entry(
-                                        "ml",
+                                        Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -679,7 +679,7 @@ public class UAST {
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "or",
+                                        Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -689,7 +689,7 @@ public class UAST {
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "te",
+                                        Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -699,7 +699,7 @@ public class UAST {
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "kn",
+                                        Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -709,7 +709,7 @@ public class UAST {
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "gu",
+                                        Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -719,21 +719,21 @@ public class UAST {
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.DataFunction))))),
                 Map.entry(
-                        "te",
+                        Scheme.TE,
                         Map.ofEntries(
                                 Map.entry(
-                                        "devanagari",
+                                        Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.ScriptToDevanagari))),
                                 Map.entry(
-                                        "uast",
+                                        Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.ScriptToDevanagari),
                                                 UAST::devanagariToUAST)),
                                 Map.entry(
-                                        "iast",
+                                        Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -742,7 +742,7 @@ public class UAST {
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
                                 Map.entry(
-                                        "ml",
+                                        Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -752,7 +752,7 @@ public class UAST {
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "or",
+                                        Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -762,7 +762,7 @@ public class UAST {
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "ta",
+                                        Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -772,7 +772,7 @@ public class UAST {
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "kn",
+                                        Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.ScriptToDevanagari),
@@ -782,7 +782,7 @@ public class UAST {
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.DataFunction))),
                                 Map.entry(
-                                        "gu",
+                                        Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.ScriptToDevanagari),

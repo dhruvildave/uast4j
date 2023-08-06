@@ -7,34 +7,40 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
-    private static final Set<String> fromSchemes =
-            Set.of("uast", "raw", "devanagari", "iast", "slp", "gu", "or", "ta", "te", "ml", "kn");
+    private static final Set<Scheme> FROM_SCHEMES =
+            Set.of(Scheme.UAST, Scheme.RAW, Scheme.DEVANĀGARĪ, Scheme.IAST, Scheme.SLP, Scheme.GU, Scheme.OR, Scheme.TA, Scheme.TE, Scheme.ML, Scheme.KN);
 
-    private static final Set<String> toSchemes =
-            Set.of("uast", "devanagari", "iast", "gu", "or", "ta", "te", "ml", "kn");
+    private static final Set<Scheme> TO_SCHEMES =
+            Set.of(Scheme.UAST, Scheme.DEVANĀGARĪ, Scheme.IAST, Scheme.GU, Scheme.OR, Scheme.TA, Scheme.TE, Scheme.ML, Scheme.KN);
 
     public static void main(String[] args) {
         if (args.length % 2 != 0) {
             throw new IllegalArgumentException("invalid number of arguments");
         }
 
-        var to = "devanagari";
-        var from = "uast";
+        var to = Scheme.DEVANĀGARĪ;
+        var from = Scheme.UAST;
 
         for (var i = 0; i < args.length; i += 2) {
+            if (args[i + 1].equals("devanagari")) {
+                args[i + 1] = "devanāgarī";
+            }
+
+            args[i + 1] = args[i + 1].toUpperCase();
+            var s = Scheme.valueOf(args[i + 1]);
             if (args[i].equals("-to")) {
-                if (!toSchemes.contains(args[i + 1])) {
+                if (!TO_SCHEMES.contains(s)) {
                     throw new IllegalArgumentException("invalid value for `to`");
                 }
-                to = args[i + 1];
+                to = s;
                 continue;
             }
 
             if (args[i].equals("-from")) {
-                if (!fromSchemes.contains(args[i + 1])) {
+                if (!FROM_SCHEMES.contains(s)) {
                     throw new IllegalArgumentException("invalid value for `from`");
                 }
-                from = args[i + 1];
+                from = s;
                 continue;
             }
 
