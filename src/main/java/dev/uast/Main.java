@@ -7,31 +7,31 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
-    private static final Set<Scheme> fromSchemes = Set.of(
-                Scheme.UAST,
-                Scheme.RAW,
-                Scheme.DEVANĀGARĪ,
-                Scheme.IAST,
-                Scheme.SLP,
-                Scheme.GU,
-                Scheme.OR,
-                Scheme.TA,
-                Scheme.TE,
-                Scheme.ML,
-                Scheme.KN
-            );
+    private static final Set<Scheme> fromSchemes =
+            Set.of(
+                    Scheme.UAST,
+                    Scheme.RAW,
+                    Scheme.DEVANĀGARĪ,
+                    Scheme.IAST,
+                    Scheme.SLP,
+                    Scheme.GU,
+                    Scheme.OR,
+                    Scheme.TA,
+                    Scheme.TE,
+                    Scheme.ML,
+                    Scheme.KN);
 
-    private static final Set<Scheme> toSchemes = Set.of(
-                Scheme.UAST,
-                Scheme.DEVANĀGARĪ,
-                Scheme.IAST,
-                Scheme.GU,
-                Scheme.OR,
-                Scheme.TA,
-                Scheme.TE,
-                Scheme.ML,
-                Scheme.KN
-            );
+    private static final Set<Scheme> toSchemes =
+            Set.of(
+                    Scheme.UAST,
+                    Scheme.DEVANĀGARĪ,
+                    Scheme.IAST,
+                    Scheme.GU,
+                    Scheme.OR,
+                    Scheme.TA,
+                    Scheme.TE,
+                    Scheme.ML,
+                    Scheme.KN);
 
     public static void main(String[] args) {
         if (args.length % 2 != 0) {
@@ -72,6 +72,9 @@ public class Main {
         var transforms = UAST.convertor.get(from).get(to);
         try (var in = new Scanner(System.in, StandardCharsets.UTF_8);
                 var out = new PrintWriter(System.out, true)) {
+            out.println("`from`: " + from);
+            out.println("`to`: " + to);
+
             while (in.hasNextLine()) {
                 var x = in.nextLine();
 
