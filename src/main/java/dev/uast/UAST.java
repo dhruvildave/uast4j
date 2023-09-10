@@ -1,5 +1,6 @@
 package dev.uast;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -932,7 +933,7 @@ public class UAST {
                 i++;
             }
 
-            return String.join("", arr);
+            return Normalizer.normalize(String.join("", arr), Normalizer.Form.NFC);
         };
     }
 
@@ -942,7 +943,7 @@ public class UAST {
         return (String s) -> {
             var arr = new ArrayList<String>(s.length());
 
-            for (var v : s.toCharArray()) {
+            for (var v : Normalizer.normalize(s, Normalizer.Form.NFC).toCharArray()) {
                 var l = String.valueOf(v);
 
                 if (obj.containsKey(l)) {
@@ -955,12 +956,14 @@ public class UAST {
                 }
             }
 
-            return String.join("", arr);
+            return Normalizer.normalize(String.join("", arr), Normalizer.Form.NFC);
         };
     }
 
     private static String dataToIAST(String data) {
-        data = data.replaceAll("[\\[\\]{}^~@#$%&*_;.<>\\n\\v\\t\\r\\f]", "");
+        data =
+                Normalizer.normalize(data, Normalizer.Form.NFC)
+                        .replaceAll("[\\[\\]{}^~@#$%&*_;.<>\\n\\v\\t\\r\\f]", "");
 
         var ans = new ArrayList<String>(data.length());
 
@@ -1099,11 +1102,13 @@ public class UAST {
             ans.add(String.join("", arr));
         }
 
-        return String.join("", ans);
+        return Normalizer.normalize(String.join("", ans), Normalizer.Form.NFC);
     }
 
     private static String IASTToUAST(String data) {
-        data = data.replaceAll("[\\[\\]{}^~@#$%&*\\-_;<>]", "");
+        data =
+                Normalizer.normalize(data, Normalizer.Form.NFC)
+                        .replaceAll("[\\[\\]{}^~@#$%&*\\-_;<>]", "");
 
         var str = new ArrayList<String>();
         for (var v : data.toCharArray()) {
@@ -1265,7 +1270,7 @@ public class UAST {
             }
         }
 
-        return String.join("", fin);
+        return Normalizer.normalize(String.join("", fin), Normalizer.Form.NFC);
     }
 
     private static Function<String, String> createDataFunction(LangList lang) {
@@ -1356,13 +1361,13 @@ public class UAST {
                 ans.add(String.join("", arr));
             }
 
-            return String.join("", ans);
+            return Normalizer.normalize(String.join("", ans), Normalizer.Form.NFC);
         };
     }
 
     private static String devanagariToUAST(String data) {
         var str = new ArrayList<String>();
-        for (var v : data.toCharArray()) {
+        for (var v : Normalizer.normalize(data, Normalizer.Form.NFC).toCharArray()) {
             str.add(String.valueOf(v));
         }
 
@@ -1405,7 +1410,7 @@ public class UAST {
             arr.add(val);
         }
 
-        return String.join("", arr);
+        return Normalizer.normalize(String.join("", arr), Normalizer.Form.NFC);
     }
 
     private static String SLPToIAST(String data) {
@@ -1419,6 +1424,6 @@ public class UAST {
             }
         }
 
-        return String.join("", str);
+        return Normalizer.normalize(String.join("", str), Normalizer.Form.NFC);
     }
 }

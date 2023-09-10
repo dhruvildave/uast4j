@@ -12,7 +12,7 @@ repositories {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(20))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
