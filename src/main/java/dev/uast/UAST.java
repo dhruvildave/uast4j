@@ -1041,11 +1041,10 @@ public class UAST {
                 if (i == str.size() - 1) {
                     if (curr.equals("ḥ") || curr.equals("ṃ") || curr.equals("ã")) {
                         arr.add(curr);
-                        i++;
-                        continue;
+                    } else {
+                        arr.add(curr + "a");
                     }
 
-                    arr.add(curr + "a");
                     i++;
                     continue;
                 }
