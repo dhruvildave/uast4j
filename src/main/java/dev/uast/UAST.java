@@ -999,11 +999,13 @@ public class UAST {
                 var curr = str.get(i);
 
                 if (curr.equals("'")) {
+                    // arr.push("॑");
                     i++;
                     continue;
                 }
 
                 if (curr.equals("`")) {
+                    // arr.push("॒");
                     i++;
                     continue;
                 }
@@ -1091,6 +1093,11 @@ public class UAST {
 
                 if (curr.equals("ḥ") || curr.equals("ṃ") || curr.equals("ã")) {
                     arr.add(curr);
+                    i++;
+                    continue;
+                }
+
+                if (Data.iastAllowed.contains(curr)) {
                     i++;
                     continue;
                 }
