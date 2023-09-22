@@ -21,7 +21,7 @@ public class UAST {
                     Map.ofEntries(
                             Map.entry(FuncList.HandleUnicode, createHandleUnicode(i)),
                             Map.entry(FuncList.DataFunction, createDataFunction(i)),
-                            Map.entry(FuncList.ScriptToDevanagari, createScriptFunction(i))));
+                            Map.entry(FuncList.ScriptToDevanāgarī, createScriptFunction(i))));
         }
 
         return Map.ofEntries(
@@ -170,18 +170,18 @@ public class UAST {
                 Map.entry(
                         Scheme.DEVANĀGARĪ,
                         Map.ofEntries(
-                                Map.entry(Scheme.UAST, List.of(UAST::devanagariToUAST)),
+                                Map.entry(Scheme.UAST, List.of(UAST::devanāgarīToUAST)),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
-                                                UAST::devanagariToUAST,
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
                                 Map.entry(
                                         Scheme.GU,
                                         List.of(
-                                                UAST::devanagariToUAST,
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.GU)
@@ -189,7 +189,7 @@ public class UAST {
                                 Map.entry(
                                         Scheme.OR,
                                         List.of(
-                                                UAST::devanagariToUAST,
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.OR)
@@ -197,7 +197,7 @@ public class UAST {
                                 Map.entry(
                                         Scheme.KN,
                                         List.of(
-                                                UAST::devanagariToUAST,
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.KN)
@@ -205,7 +205,7 @@ public class UAST {
                                 Map.entry(
                                         Scheme.TE,
                                         List.of(
-                                                UAST::devanagariToUAST,
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TE)
@@ -213,7 +213,7 @@ public class UAST {
                                 Map.entry(
                                         Scheme.TA,
                                         List.of(
-                                                UAST::devanagariToUAST,
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TA)
@@ -221,7 +221,7 @@ public class UAST {
                                 Map.entry(
                                         Scheme.ML,
                                         List.of(
-                                                UAST::devanagariToUAST,
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.ML)
@@ -361,19 +361,20 @@ public class UAST {
                                         Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.GU)
-                                                        .get(FuncList.ScriptToDevanagari))),
+                                                        .get(FuncList.ScriptToDevanāgarī))),
                                 Map.entry(
                                         Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.GU)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST)),
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST
+                                        )),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.GU)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
@@ -381,8 +382,8 @@ public class UAST {
                                         Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.GU)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.OR)
@@ -391,8 +392,8 @@ public class UAST {
                                         Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.GU)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.KN)
@@ -401,8 +402,8 @@ public class UAST {
                                         Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.GU)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TE)
@@ -411,8 +412,8 @@ public class UAST {
                                         Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.GU)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TA)
@@ -421,8 +422,8 @@ public class UAST {
                                         Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.GU)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.ML)
@@ -434,19 +435,20 @@ public class UAST {
                                         Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.ML)
-                                                        .get(FuncList.ScriptToDevanagari))),
+                                                        .get(FuncList.ScriptToDevanāgarī))),
                                 Map.entry(
                                         Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.ML)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST)),
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST
+                                        )),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.ML)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
@@ -454,8 +456,8 @@ public class UAST {
                                         Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.ML)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.OR)
@@ -464,8 +466,8 @@ public class UAST {
                                         Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.ML)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.KN)
@@ -474,8 +476,8 @@ public class UAST {
                                         Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.ML)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TE)
@@ -484,8 +486,8 @@ public class UAST {
                                         Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.ML)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TA)
@@ -494,8 +496,8 @@ public class UAST {
                                         Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.ML)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.GU)
@@ -507,19 +509,20 @@ public class UAST {
                                         Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.OR)
-                                                        .get(FuncList.ScriptToDevanagari))),
+                                                        .get(FuncList.ScriptToDevanāgarī))),
                                 Map.entry(
                                         Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.OR)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST)),
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST
+                                        )),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.OR)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
@@ -527,8 +530,8 @@ public class UAST {
                                         Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.OR)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.ML)
@@ -537,8 +540,8 @@ public class UAST {
                                         Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.OR)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.KN)
@@ -547,8 +550,8 @@ public class UAST {
                                         Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.OR)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TE)
@@ -557,8 +560,8 @@ public class UAST {
                                         Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.OR)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TA)
@@ -567,8 +570,8 @@ public class UAST {
                                         Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.OR)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.GU)
@@ -580,19 +583,20 @@ public class UAST {
                                         Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.KN)
-                                                        .get(FuncList.ScriptToDevanagari))),
+                                                        .get(FuncList.ScriptToDevanāgarī))),
                                 Map.entry(
                                         Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.KN)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST)),
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST
+                                        )),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.KN)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
@@ -600,8 +604,8 @@ public class UAST {
                                         Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.KN)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.ML)
@@ -610,8 +614,8 @@ public class UAST {
                                         Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.KN)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.OR)
@@ -620,8 +624,8 @@ public class UAST {
                                         Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.KN)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TE)
@@ -630,8 +634,8 @@ public class UAST {
                                         Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.KN)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TA)
@@ -640,8 +644,8 @@ public class UAST {
                                         Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.KN)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.GU)
@@ -653,19 +657,20 @@ public class UAST {
                                         Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.TA)
-                                                        .get(FuncList.ScriptToDevanagari))),
+                                                        .get(FuncList.ScriptToDevanāgarī))),
                                 Map.entry(
                                         Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.TA)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST)),
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST
+                                        )),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.TA)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
@@ -673,8 +678,8 @@ public class UAST {
                                         Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.TA)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.ML)
@@ -683,8 +688,8 @@ public class UAST {
                                         Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.TA)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.OR)
@@ -693,8 +698,8 @@ public class UAST {
                                         Scheme.TE,
                                         List.of(
                                                 builder.get(LangList.TA)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TE)
@@ -703,8 +708,8 @@ public class UAST {
                                         Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.TA)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.KN)
@@ -713,8 +718,8 @@ public class UAST {
                                         Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.TA)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.GU)
@@ -726,19 +731,20 @@ public class UAST {
                                         Scheme.DEVANĀGARĪ,
                                         List.of(
                                                 builder.get(LangList.TE)
-                                                        .get(FuncList.ScriptToDevanagari))),
+                                                        .get(FuncList.ScriptToDevanāgarī))),
                                 Map.entry(
                                         Scheme.UAST,
                                         List.of(
                                                 builder.get(LangList.TE)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST)),
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST
+                                        )),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
                                                 builder.get(LangList.TE)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.SA)
                                                         .get(FuncList.HandleUnicode),
                                                 UAST::dataToIAST)),
@@ -746,8 +752,8 @@ public class UAST {
                                         Scheme.ML,
                                         List.of(
                                                 builder.get(LangList.TE)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.ML)
@@ -756,8 +762,8 @@ public class UAST {
                                         Scheme.OR,
                                         List.of(
                                                 builder.get(LangList.TE)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.OR)
@@ -766,8 +772,8 @@ public class UAST {
                                         Scheme.TA,
                                         List.of(
                                                 builder.get(LangList.TE)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.TA)
@@ -776,8 +782,8 @@ public class UAST {
                                         Scheme.KN,
                                         List.of(
                                                 builder.get(LangList.TE)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.KN)
@@ -786,8 +792,8 @@ public class UAST {
                                         Scheme.GU,
                                         List.of(
                                                 builder.get(LangList.TE)
-                                                        .get(FuncList.ScriptToDevanagari),
-                                                UAST::devanagariToUAST,
+                                                        .get(FuncList.ScriptToDevanāgarī),
+                                                UAST::devanāgarīToUAST,
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.HandleUnicode),
                                                 builder.get(LangList.GU)
@@ -1371,7 +1377,7 @@ public class UAST {
         };
     }
 
-    private static String devanagariToUAST(String data) {
+    private static String devanāgarīToUAST(String data) {
         var str = new ArrayList<String>();
         for (var v : Normalizer.normalize(data, Normalizer.Form.NFC).toCharArray()) {
             str.add(String.valueOf(v));
@@ -1397,8 +1403,8 @@ public class UAST {
                 continue;
             }
 
-            var val = Data.devanagariDataDict.getOrDefault(curr, curr);
-            var nextVal = Data.devanagariDataDict.getOrDefault(next, next);
+            var val = Data.devanāgarīDataDict.getOrDefault(curr, curr);
+            var nextVal = Data.devanāgarīDataDict.getOrDefault(next, next);
             var checkVowel = Data.charDict.get(LangList.SA).get(LangMap.VOWELS).containsValue(curr);
             var checkConsonant =
                     Data.charDict.get(LangList.SA).get(LangMap.CONSONANTS).containsValue(next);

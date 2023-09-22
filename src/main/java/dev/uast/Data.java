@@ -74,7 +74,7 @@ public interface Data {
                     Map.entry("ॐ", "om"),
                     Map.entry("ã", "au"));
 
-    Map<String, String> devanagariDataDict =
+    Map<String, String> devanāgarīDataDict =
             Map.<String, String>ofEntries(
                     Map.entry("क", "k"),
                     Map.entry("ख", "kh"),
