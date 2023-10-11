@@ -3,12 +3,12 @@
 A tool for transliterating and typing Sanskrit in the easiest
 computer, language, and human-friendly way
 
-To install this program, you will need to install [Java 20](https://adoptium.net/temurin/releases/)
+To install this program, you will need to install Java 21
 
 After that, just run
 
 ```bash
-./gradlew clean jar
+./gradlew -i clean jar
 ```
 
 To run,
