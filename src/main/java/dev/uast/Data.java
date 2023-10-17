@@ -40,7 +40,7 @@ public interface Data {
                     "ś", "ṣ", "s", "h", "ḻ");
 
     Map<String, String> iastDataDict =
-            Map.ofEntries(
+            Map.<String, String>ofEntries(
                     Map.entry("०", "0"),
                     Map.entry("१", "1"),
                     Map.entry("२", "2"),
@@ -220,14 +220,14 @@ public interface Data {
                             Map.ofEntries(
                                     Map.entry(
                                             LangMap.MISC,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("।", "."),
                                                     Map.entry("॥", ".."),
                                                     Map.entry("ऽ", "'"),
                                                     Map.entry("ॐ", "om"))),
                                     Map.entry(
                                             LangMap.NUMBERS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("૦", "0"),
                                                     Map.entry("૧", "1"),
                                                     Map.entry("૨", "2"),
@@ -240,7 +240,7 @@ public interface Data {
                                                     Map.entry("૯", "9"))),
                                     Map.entry(
                                             LangMap.VOWELS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", "અ"),
                                                     Map.entry("ā", "આ"),
                                                     Map.entry("i", "ઇ"),
@@ -254,7 +254,7 @@ public interface Data {
                                                     Map.entry("au", "ઔ"))),
                                     Map.entry(
                                             LangMap.VOWELSIGNS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", ""),
                                                     Map.entry("ā", "ા"),
                                                     Map.entry("i", "િ"),
@@ -272,7 +272,7 @@ public interface Data {
                                                     Map.entry("-", "્"))),
                                     Map.entry(
                                             LangMap.CONSONANTS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("k", "ક"),
                                                     Map.entry("kh", "ખ"),
                                                     Map.entry("g", "ગ"),
@@ -312,14 +312,14 @@ public interface Data {
                             Map.ofEntries(
                                     Map.entry(
                                             LangMap.MISC,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("।", "."),
                                                     Map.entry("॥", ".."),
                                                     Map.entry("𑌽", "'"),
                                                     Map.entry("𑍐", "om"))),
                                     Map.entry(
                                             LangMap.NUMBERS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("௦", "0"),
                                                     Map.entry("௧", "1"),
                                                     Map.entry("௨", "2"),
@@ -332,7 +332,7 @@ public interface Data {
                                                     Map.entry("௯", "9"))),
                                     Map.entry(
                                             LangMap.VOWELS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", "𑌅"),
                                                     Map.entry("ā", "𑌆"),
                                                     Map.entry("i", "𑌇"),
@@ -349,7 +349,7 @@ public interface Data {
                                                     Map.entry("au", "𑌔"))),
                                     Map.entry(
                                             LangMap.VOWELSIGNS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", ""),
                                                     Map.entry("ā", "𑌾"),
                                                     Map.entry("i", "𑌿"),
@@ -370,7 +370,7 @@ public interface Data {
                                                     Map.entry("-", "𑍍"))),
                                     Map.entry(
                                             LangMap.CONSONANTS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("k", "𑌕"),
                                                     Map.entry("kh", "𑌖"),
                                                     Map.entry("g", "𑌗"),
@@ -410,14 +410,14 @@ public interface Data {
                             Map.ofEntries(
                                     Map.entry(
                                             LangMap.MISC,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("।", "."),
                                                     Map.entry("॥", ".."),
                                                     Map.entry("ഽ", "'"),
                                                     Map.entry("ഓം", "om"))),
                                     Map.entry(
                                             LangMap.NUMBERS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("൦", "0"),
                                                     Map.entry("൧", "1"),
                                                     Map.entry("൨", "2"),
@@ -430,7 +430,7 @@ public interface Data {
                                                     Map.entry("൯", "9"))),
                                     Map.entry(
                                             LangMap.VOWELS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", "അ"),
                                                     Map.entry("ā", "ആ"),
                                                     Map.entry("i", "ഇ"),
@@ -447,7 +447,7 @@ public interface Data {
                                                     Map.entry("au", "ഔ"))),
                                     Map.entry(
                                             LangMap.VOWELSIGNS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", ""),
                                                     Map.entry("ā", "ാ"),
                                                     Map.entry("i", "ി"),
@@ -468,7 +468,7 @@ public interface Data {
                                                     Map.entry("-", "്"))),
                                     Map.entry(
                                             LangMap.CONSONANTS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("k", "ക"),
                                                     Map.entry("kh", "ഖ"),
                                                     Map.entry("g", "ഗ"),
@@ -508,14 +508,14 @@ public interface Data {
                             Map.ofEntries(
                                     Map.entry(
                                             LangMap.MISC,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("।", "."),
                                                     Map.entry("॥", ".."),
                                                     Map.entry("ఽ", "'"),
                                                     Map.entry("ఓం", "om"))),
                                     Map.entry(
                                             LangMap.NUMBERS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("౦", "0"),
                                                     Map.entry("౧", "1"),
                                                     Map.entry("౨", "2"),
@@ -528,7 +528,7 @@ public interface Data {
                                                     Map.entry("౯", "9"))),
                                     Map.entry(
                                             LangMap.VOWELS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", "అ"),
                                                     Map.entry("ā", "ఆ"),
                                                     Map.entry("i", "ఇ"),
@@ -545,7 +545,7 @@ public interface Data {
                                                     Map.entry("au", "ఔ"))),
                                     Map.entry(
                                             LangMap.VOWELSIGNS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", ""),
                                                     Map.entry("ā", "ా"),
                                                     Map.entry("i", "ి"),
@@ -566,7 +566,7 @@ public interface Data {
                                                     Map.entry("-", "్"))),
                                     Map.entry(
                                             LangMap.CONSONANTS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("k", "క"),
                                                     Map.entry("kh", "ఖ"),
                                                     Map.entry("g", "గ"),
@@ -606,14 +606,14 @@ public interface Data {
                             Map.ofEntries(
                                     Map.entry(
                                             LangMap.MISC,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("।", "."),
                                                     Map.entry("॥", ".."),
                                                     Map.entry("ಽ", "'"),
                                                     Map.entry("ಓಂ", "om"))),
                                     Map.entry(
                                             LangMap.NUMBERS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("೦", "0"),
                                                     Map.entry("೧", "1"),
                                                     Map.entry("೨", "2"),
@@ -626,7 +626,7 @@ public interface Data {
                                                     Map.entry("೯", "9"))),
                                     Map.entry(
                                             LangMap.VOWELS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", "ಅ"),
                                                     Map.entry("ā", "ಆ"),
                                                     Map.entry("i", "ಇ"),
@@ -643,7 +643,7 @@ public interface Data {
                                                     Map.entry("au", "ಔ"))),
                                     Map.entry(
                                             LangMap.VOWELSIGNS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", ""),
                                                     Map.entry("ā", "ಾ"),
                                                     Map.entry("i", "ಿ"),
@@ -664,7 +664,7 @@ public interface Data {
                                                     Map.entry("-", "್"))),
                                     Map.entry(
                                             LangMap.CONSONANTS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("k", "ಕ"),
                                                     Map.entry("kh", "ಖ"),
                                                     Map.entry("g", "ಗ"),
@@ -704,14 +704,14 @@ public interface Data {
                             Map.ofEntries(
                                     Map.entry(
                                             LangMap.MISC,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("।", "."),
                                                     Map.entry("॥", ".."),
                                                     Map.entry("ଽ", "'"),
                                                     Map.entry("ଓଁ", "om"))),
                                     Map.entry(
                                             LangMap.NUMBERS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("୦", "0"),
                                                     Map.entry("୧", "1"),
                                                     Map.entry("୨", "2"),
@@ -724,7 +724,7 @@ public interface Data {
                                                     Map.entry("୯", "9"))),
                                     Map.entry(
                                             LangMap.VOWELS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", "ଅ"),
                                                     Map.entry("ā", "ଆ"),
                                                     Map.entry("i", "ଇ"),
@@ -741,7 +741,7 @@ public interface Data {
                                                     Map.entry("au", "ଔ"))),
                                     Map.entry(
                                             LangMap.VOWELSIGNS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", ""),
                                                     Map.entry("ā", "ା"),
                                                     Map.entry("i", "ି"),
@@ -762,7 +762,7 @@ public interface Data {
                                                     Map.entry("-", "୍"))),
                                     Map.entry(
                                             LangMap.CONSONANTS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("k", "କ"),
                                                     Map.entry("kh", "ଖ"),
                                                     Map.entry("g", "ଗ"),
@@ -802,14 +802,14 @@ public interface Data {
                             Map.ofEntries(
                                     Map.entry(
                                             LangMap.MISC,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("।", "."),
                                                     Map.entry("॥", ".."),
                                                     Map.entry("ऽ", "'"),
                                                     Map.entry("ॐ", "om"))),
                                     Map.entry(
                                             LangMap.NUMBERS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("०", "0"),
                                                     Map.entry("१", "1"),
                                                     Map.entry("२", "2"),
@@ -822,7 +822,7 @@ public interface Data {
                                                     Map.entry("९", "9"))),
                                     Map.entry(
                                             LangMap.VOWELS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", "अ"),
                                                     Map.entry("ā", "आ"),
                                                     Map.entry("i", "इ"),
@@ -839,7 +839,7 @@ public interface Data {
                                                     Map.entry("au", "औ"))),
                                     Map.entry(
                                             LangMap.VOWELSIGNS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("a", ""),
                                                     Map.entry("ā", "ा"),
                                                     Map.entry("i", "ि"),
@@ -860,7 +860,7 @@ public interface Data {
                                                     Map.entry("-", "्"))),
                                     Map.entry(
                                             LangMap.CONSONANTS,
-                                            Map.ofEntries(
+                                            Map.<String, String>ofEntries(
                                                     Map.entry("k", "क"),
                                                     Map.entry("kh", "ख"),
                                                     Map.entry("g", "ग"),
@@ -1390,5 +1390,5 @@ public interface Data {
                                     Map.entry("𑌸", "स"),
                                     Map.entry("𑌹", "ह"),
                                     Map.entry("𑌳", "ळ"))),
-                    Map.entry(LangList.SA, Map.ofEntries()));
+                    Map.entry(LangList.SA, Map.<String, String>ofEntries()));
 }

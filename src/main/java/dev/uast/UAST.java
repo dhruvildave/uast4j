@@ -1267,7 +1267,7 @@ public class UAST {
         if (!ans.isEmpty()
                 && !str.isEmpty()
                 && saDict.get(LangMap.CONSONANTS).containsKey(ans.get(ans.size() - 1))
-                && !str.get(str.size() - 1).equals("a")) {
+                && !str.getLast().equals("a")) {
             ans.add("-");
         }
 
