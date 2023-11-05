@@ -1,6 +1,7 @@
 plugins {
     idea
     application
+    kotlin("jvm")
 }
 
 group = "dev.uast"
@@ -17,12 +18,12 @@ java {
 }
 
 application {
-    mainClass.set("dev.uast.Main")
+    mainClass.set("dev.uast.MainKt")
 }
 
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-class"] = "dev.uast.Main"
+        attributes["Main-class"] = "dev.uast.MainKt"
     }
 
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
@@ -37,4 +38,8 @@ tasks.withType<Jar> {
             zipTree(it)
         }
     })
+}
+
+dependencies {
+    implementation(kotlin("stdlib"))
 }
