@@ -15,7 +15,7 @@ public class UAST {
     private static Map<Scheme, Map<Scheme, List<Function<String, String>>>> builder() {
         var builder = new HashMap<LangList, Map<FuncList, Function<String, String>>>();
 
-        for (var i : LangList.values()) {
+        for (var i : LangList.getEntries()) {
             builder.put(
                     i,
                     Map.ofEntries(
@@ -367,8 +367,7 @@ public class UAST {
                                         List.of(
                                                 builder.get(LangList.GU)
                                                         .get(FuncList.ScriptToDevanāgarī),
-                                                UAST::devanāgarīToUAST
-                                        )),
+                                                UAST::devanāgarīToUAST)),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
@@ -441,8 +440,7 @@ public class UAST {
                                         List.of(
                                                 builder.get(LangList.ML)
                                                         .get(FuncList.ScriptToDevanāgarī),
-                                                UAST::devanāgarīToUAST
-                                        )),
+                                                UAST::devanāgarīToUAST)),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
@@ -515,8 +513,7 @@ public class UAST {
                                         List.of(
                                                 builder.get(LangList.OR)
                                                         .get(FuncList.ScriptToDevanāgarī),
-                                                UAST::devanāgarīToUAST
-                                        )),
+                                                UAST::devanāgarīToUAST)),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
@@ -589,8 +586,7 @@ public class UAST {
                                         List.of(
                                                 builder.get(LangList.KN)
                                                         .get(FuncList.ScriptToDevanāgarī),
-                                                UAST::devanāgarīToUAST
-                                        )),
+                                                UAST::devanāgarīToUAST)),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
@@ -663,8 +659,7 @@ public class UAST {
                                         List.of(
                                                 builder.get(LangList.TA)
                                                         .get(FuncList.ScriptToDevanāgarī),
-                                                UAST::devanāgarīToUAST
-                                        )),
+                                                UAST::devanāgarīToUAST)),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
@@ -737,8 +732,7 @@ public class UAST {
                                         List.of(
                                                 builder.get(LangList.TE)
                                                         .get(FuncList.ScriptToDevanāgarī),
-                                                UAST::devanāgarīToUAST
-                                        )),
+                                                UAST::devanāgarīToUAST)),
                                 Map.entry(
                                         Scheme.IAST,
                                         List.of(
@@ -970,7 +964,6 @@ public class UAST {
         data =
                 Normalizer.normalize(data, Normalizer.Form.NFC)
                         .replaceAll("[\\[\\]{}^~@#$%&*_;.<>\\n\\v\\t\\r\\f]", "");
-
         var ans = new ArrayList<String>(data.length());
 
         for (var split : data.split("\\\\")) {
@@ -1102,7 +1095,7 @@ public class UAST {
                     continue;
                 }
 
-                if (Data.iastAllowed.contains(curr)) {
+                if (!Data.iastAllowed.contains(curr)) {
                     i++;
                     continue;
                 }

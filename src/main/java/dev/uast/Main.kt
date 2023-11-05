@@ -1,9 +1,5 @@
 package dev.uast
 
-import java.io.PrintWriter
-import java.nio.charset.StandardCharsets
-import java.util.*
-
 private val fromSchemes: Set<Scheme> = setOf(
     Scheme.UAST,
     Scheme.RAW,
@@ -58,29 +54,24 @@ fun main(args: Array<String>) {
         }
     }
 
-    val transforms = UAST.convertor[from]!![to]!!
-    Scanner(System.`in`, StandardCharsets.UTF_8).use { input ->
-        PrintWriter(
-            System.out, true
-        ).use { output ->
-            output.println("`from`: $from")
-            output.println("`to`: $to")
-            while (input.hasNextLine()) {
-                val x = input.nextLine()
+    val transforms = UAST.convertor?.get(from)?.get(to) ?: listOf()
 
-                for (l in x.split("\n")) {
-                    val s = l.split(" ")
-                    val arr = mutableListOf<String>()
-                    for (w in s) {
-                        var i = w
-                        for (f in transforms) {
-                            i = f.apply(i)
-                        }
-                        arr.add(i)
-                    }
-                    output.println(arr.joinToString(" "))
+    println("`from`: $from")
+    println("`to`: $to")
+    while (true) {
+        val x = readlnOrNull() ?: break
+
+        for (l in x.split("\n")) {
+            val s = l.split(" ")
+            val arr = mutableListOf<String>()
+            for (w in s) {
+                var i = w
+                for (f in transforms) {
+                    i = f.apply(i)
                 }
+                arr.add(i)
             }
+            println(arr.joinToString(" "))
         }
     }
 }
