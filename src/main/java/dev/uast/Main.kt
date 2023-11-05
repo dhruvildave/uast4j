@@ -4,7 +4,6 @@ import java.io.PrintWriter
 import java.nio.charset.StandardCharsets
 import java.util.*
 
-
 private val fromSchemes: Set<Scheme> = setOf(
     Scheme.UAST,
     Scheme.RAW,
@@ -24,13 +23,14 @@ private val toSchemes: Set<Scheme> = setOf(
 )
 
 fun main(args: Array<String>) {
-    require(args.size % 2 == 0) { "invalid number of arguments" }
+    require(args.size % 2 == 0) {
+        "invalid number of arguments"
+    }
 
     var to = Scheme.DEVANĀGARĪ
     var from = Scheme.UAST
 
-    var i = 0
-    while (i < args.size) {
+    for (i in args.indices step 2) {
         if (args[i + 1] == "devanagari") {
             args[i + 1] = "devanāgarī"
         }
@@ -38,44 +38,47 @@ fun main(args: Array<String>) {
         args[i + 1] = args[i + 1].uppercase()
         val s = Scheme.valueOf(args[i + 1])
         if (args[i] == "-to") {
-            require(toSchemes.contains(s)) { "invalid value for `to`" }
+            require(toSchemes.contains(s)) {
+                "invalid value for `to`"
+            }
             to = s
-            i += 2
             continue
         }
 
         if (args[i] == "-from") {
-            require(fromSchemes.contains(s)) { "invalid value for `from`" }
+            require(fromSchemes.contains(s)) {
+                "invalid value for `from`"
+            }
             from = s
-            i += 2
             continue
         }
 
-        require(!args[i].matches("-\\w+".toRegex())) { "illegal argument passed " + args[i] }
-        i += 2
+        require(!args[i].matches("-\\w+".toRegex())) {
+            "illegal argument passed ${args[i]}"
+        }
     }
 
     val transforms = UAST.convertor[from]!![to]!!
-    Scanner(System.`in`, StandardCharsets.UTF_8).use { `in` ->
+    Scanner(System.`in`, StandardCharsets.UTF_8).use { input ->
         PrintWriter(
             System.out, true
-        ).use { out ->
-            out.println("`from`: $from")
-            out.println("`to`: $to")
-            while (`in`.hasNextLine()) {
-                val x = `in`.nextLine()
+        ).use { output ->
+            output.println("`from`: $from")
+            output.println("`to`: $to")
+            while (input.hasNextLine()) {
+                val x = input.nextLine()
 
-                for (l in x.split("\\n".toRegex()).dropLastWhile { it.isEmpty() }) {
-                    val s = l.split(" ".toRegex()).dropLastWhile { it.isEmpty() }
-                    val arr = ArrayList<String>(s.size)
+                for (l in x.split("\n")) {
+                    val s = l.split(" ")
+                    val arr = mutableListOf<String>()
                     for (w in s) {
-                        var ij = w
+                        var i = w
                         for (f in transforms) {
-                            ij = f.apply(ij)
+                            i = f.apply(i)
                         }
-                        arr.add(ij)
+                        arr.add(i)
                     }
-                    out.println(java.lang.String.join(" ", arr))
+                    output.println(arr.joinToString(" "))
                 }
             }
         }
