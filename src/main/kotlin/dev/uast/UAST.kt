@@ -9,11 +9,11 @@ class UAST {
         private fun builder(): Map<Scheme, Map<Scheme, List<(String) -> String>>> {
             val builder = mutableMapOf<LangList, Map<FuncList, (String) -> String>>()
 
-            for (i in LangList.entries) {
-                builder[i] = java.util.Map.ofEntries(
-                    java.util.Map.entry(FuncList.HandleUnicode, createHandleUnicode(i)),
-                    java.util.Map.entry(FuncList.DataFunction, createDataFunction(i)),
-                    java.util.Map.entry(FuncList.ScriptToDevanāgarī, createScriptFunction(i))
+            LangList.entries.forEach {
+                builder[it] = mapOf(
+                    FuncList.HandleUnicode to createHandleUnicode(it),
+                    FuncList.DataFunction to createDataFunction(it),
+                    FuncList.ScriptToDevanāgarī to createScriptFunction(it)
                 )
             }
 
@@ -21,728 +21,559 @@ class UAST {
                 Scheme.RAW to mapOf(
                     Scheme.IAST to listOf(
                         builder[LangList.SA]!![FuncList.HandleUnicode]!!
-                    ), Scheme.DEVANĀGARĪ to listOf(
+                    ),
+
+                    Scheme.DEVANĀGARĪ to listOf(
                         builder[LangList.SA]!![FuncList.HandleUnicode]!!,
                         UAST::IASTToUAST,
                         builder[LangList.SA]!![FuncList.HandleUnicode]!!,
                         builder[LangList.SA]!![FuncList.DataFunction]!!
-                    ), Scheme.UAST to listOf(
+                    ),
+
+                    Scheme.UAST to listOf(
                         builder[LangList.SA]!![FuncList.HandleUnicode]!!, UAST::IASTToUAST
-                    ), Scheme.GU to listOf(
+                    ),
+
+                    Scheme.GU to listOf(
                         builder[LangList.GU]!![FuncList.HandleUnicode]!!,
                         UAST::IASTToUAST,
                         builder[LangList.GU]!![FuncList.HandleUnicode]!!,
                         builder[LangList.GU]!![FuncList.DataFunction]!!
-                    ), Scheme.OR to listOf(
+                    ),
+
+                    Scheme.OR to listOf(
                         builder[LangList.OR]!![FuncList.HandleUnicode]!!,
                         UAST::IASTToUAST,
                         builder[LangList.OR]!![FuncList.HandleUnicode]!!,
                         builder[LangList.OR]!![FuncList.DataFunction]!!
-                    ), Scheme.KN to listOf(
+                    ),
+
+                    Scheme.KN to listOf(
                         builder[LangList.KN]!![FuncList.HandleUnicode]!!,
                         UAST::IASTToUAST,
                         builder[LangList.KN]!![FuncList.HandleUnicode]!!,
                         builder[LangList.KN]!![FuncList.DataFunction]!!
-                    ), Scheme.ML to listOf(
+                    ),
+
+                    Scheme.ML to listOf(
                         builder[LangList.ML]!![FuncList.HandleUnicode]!!,
                         UAST::IASTToUAST,
                         builder[LangList.ML]!![FuncList.HandleUnicode]!!,
                         builder[LangList.ML]!![FuncList.DataFunction]!!
-                    ), Scheme.TA to listOf(
+                    ),
+
+                    Scheme.TA to listOf(
                         builder[LangList.TA]!![FuncList.HandleUnicode]!!,
                         UAST::IASTToUAST,
                         builder[LangList.TA]!![FuncList.HandleUnicode]!!,
                         builder[LangList.TA]!![FuncList.DataFunction]!!
-                    ), Scheme.TE to listOf(
+                    ),
+
+                    Scheme.TE to listOf(
                         builder[LangList.TE]!![FuncList.HandleUnicode]!!,
                         UAST::IASTToUAST,
                         builder[LangList.TE]!![FuncList.HandleUnicode]!!,
                         builder[LangList.TE]!![FuncList.DataFunction]!!
                     )
                 ),
-//                Map.entry(
-//                        Scheme.UAST,
-//                        Map.ofEntries(
-//                                Map.entry(
-//                                        Scheme.DEVANĀGARĪ,
-//                                        List.of(
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.IAST,
-//                                        List.of(
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                UAST::dataToIAST)),
-//                                Map.entry(
-//                                        Scheme.GU,
-//                                        List.of(
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.OR,
-//                                        List.of(
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TA,
-//                                        List.of(
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TE,
-//                                        List.of(
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.KN,
-//                                        List.of(
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.ML,
-//                                        List.of(
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.DataFunction))))),
-//                Map.entry(
-//                        Scheme.DEVANĀGARĪ,
-//                        Map.ofEntries(
-//                                Map.entry(Scheme.UAST, List.of(UAST::devanāgarīToUAST)),
-//                                Map.entry(
-//                                        Scheme.IAST,
-//                                        List.of(
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                UAST::dataToIAST)),
-//                                Map.entry(
-//                                        Scheme.GU,
-//                                        List.of(
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.OR,
-//                                        List.of(
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.KN,
-//                                        List.of(
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TE,
-//                                        List.of(
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TA,
-//                                        List.of(
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.ML,
-//                                        List.of(
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.DataFunction))))),
-//                Map.entry(
-//                        Scheme.SLP,
-//                        Map.ofEntries(
-//                                Map.entry(Scheme.IAST, List.of(UAST::SLPToIAST)),
-//                                Map.entry(Scheme.UAST, List.of(UAST::SLPToIAST, UAST::IASTToUAST)),
-//                                Map.entry(
-//                                        Scheme.DEVANĀGARĪ,
-//                                        List.of(
-//                                                UAST::SLPToIAST,
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.GU,
-//                                        List.of(
-//                                                UAST::SLPToIAST,
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.OR,
-//                                        List.of(
-//                                                UAST::SLPToIAST,
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.KN,
-//                                        List.of(
-//                                                UAST::SLPToIAST,
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TA,
-//                                        List.of(
-//                                                UAST::SLPToIAST,
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TE,
-//                                        List.of(
-//                                                UAST::SLPToIAST,
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.ML,
-//                                        List.of(
-//                                                UAST::SLPToIAST,
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.DataFunction))))),
-//                Map.entry(
-//                        Scheme.IAST,
-//                        Map.ofEntries(
-//                                Map.entry(Scheme.UAST, List.of(UAST::IASTToUAST)),
-//                                Map.entry(
-//                                        Scheme.DEVANĀGARĪ,
-//                                        List.of(
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.GU,
-//                                        List.of(
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.OR,
-//                                        List.of(
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.ML,
-//                                        List.of(
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TA,
-//                                        List.of(
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.KN,
-//                                        List.of(
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TE,
-//                                        List.of(
-//                                                UAST::IASTToUAST,
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.DataFunction))))),
-//                Map.entry(
-//                        Scheme.GU,
-//                        Map.ofEntries(
-//                                Map.entry(
-//                                        Scheme.DEVANĀGARĪ,
-//                                        List.of(
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.ScriptToDevanāgarī))),
-//                                Map.entry(
-//                                        Scheme.UAST,
-//                                        List.of(
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST)),
-//                                Map.entry(
-//                                        Scheme.IAST,
-//                                        List.of(
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                UAST::dataToIAST)),
-//                                Map.entry(
-//                                        Scheme.OR,
-//                                        List.of(
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.KN,
-//                                        List.of(
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TE,
-//                                        List.of(
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TA,
-//                                        List.of(
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.ML,
-//                                        List.of(
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.DataFunction))))),
-//                Map.entry(
-//                        Scheme.ML,
-//                        Map.ofEntries(
-//                                Map.entry(
-//                                        Scheme.DEVANĀGARĪ,
-//                                        List.of(
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.ScriptToDevanāgarī))),
-//                                Map.entry(
-//                                        Scheme.UAST,
-//                                        List.of(
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST)),
-//                                Map.entry(
-//                                        Scheme.IAST,
-//                                        List.of(
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                UAST::dataToIAST)),
-//                                Map.entry(
-//                                        Scheme.OR,
-//                                        List.of(
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.KN,
-//                                        List.of(
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TE,
-//                                        List.of(
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TA,
-//                                        List.of(
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.GU,
-//                                        List.of(
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.DataFunction))))),
-//                Map.entry(
-//                        Scheme.OR,
-//                        Map.ofEntries(
-//                                Map.entry(
-//                                        Scheme.DEVANĀGARĪ,
-//                                        List.of(
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.ScriptToDevanāgarī))),
-//                                Map.entry(
-//                                        Scheme.UAST,
-//                                        List.of(
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST)),
-//                                Map.entry(
-//                                        Scheme.IAST,
-//                                        List.of(
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                UAST::dataToIAST)),
-//                                Map.entry(
-//                                        Scheme.ML,
-//                                        List.of(
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.KN,
-//                                        List.of(
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TE,
-//                                        List.of(
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TA,
-//                                        List.of(
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.GU,
-//                                        List.of(
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.DataFunction))))),
-//                Map.entry(
-//                        Scheme.KN,
-//                        Map.ofEntries(
-//                                Map.entry(
-//                                        Scheme.DEVANĀGARĪ,
-//                                        List.of(
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.ScriptToDevanāgarī))),
-//                                Map.entry(
-//                                        Scheme.UAST,
-//                                        List.of(
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST)),
-//                                Map.entry(
-//                                        Scheme.IAST,
-//                                        List.of(
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                UAST::dataToIAST)),
-//                                Map.entry(
-//                                        Scheme.ML,
-//                                        List.of(
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.OR,
-//                                        List.of(
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TE,
-//                                        List.of(
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TA,
-//                                        List.of(
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.GU,
-//                                        List.of(
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.DataFunction))))),
-//                Map.entry(
-//                        Scheme.TA,
-//                        Map.ofEntries(
-//                                Map.entry(
-//                                        Scheme.DEVANĀGARĪ,
-//                                        List.of(
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.ScriptToDevanāgarī))),
-//                                Map.entry(
-//                                        Scheme.UAST,
-//                                        List.of(
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST)),
-//                                Map.entry(
-//                                        Scheme.IAST,
-//                                        List.of(
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                UAST::dataToIAST)),
-//                                Map.entry(
-//                                        Scheme.ML,
-//                                        List.of(
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.OR,
-//                                        List.of(
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TE,
-//                                        List.of(
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.KN,
-//                                        List.of(
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.GU,
-//                                        List.of(
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.DataFunction))))),
-//                Map.entry(
-//                        Scheme.TE,
-//                        Map.ofEntries(
-//                                Map.entry(
-//                                        Scheme.DEVANĀGARĪ,
-//                                        List.of(
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.ScriptToDevanāgarī))),
-//                                Map.entry(
-//                                        Scheme.UAST,
-//                                        List.of(
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST)),
-//                                Map.entry(
-//                                        Scheme.IAST,
-//                                        List.of(
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.SA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                UAST::dataToIAST)),
-//                                Map.entry(
-//                                        Scheme.ML,
-//                                        List.of(
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.ML)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.OR,
-//                                        List.of(
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.OR)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.TA,
-//                                        List.of(
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.TA)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.KN,
-//                                        List.of(
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.KN)
-//                                                        .get(FuncList.DataFunction))),
-//                                Map.entry(
-//                                        Scheme.GU,
-//                                        List.of(
-//                                                builder.get(LangList.TE)
-//                                                        .get(FuncList.ScriptToDevanāgarī),
-//                                                UAST::devanāgarīToUAST,
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.HandleUnicode),
-//                                                builder.get(LangList.GU)
-//                                                        .get(FuncList.DataFunction)))));
+
+                Scheme.UAST to mapOf(
+                    Scheme.DEVANĀGARĪ to listOf(
+                        builder[LangList.SA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.SA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.IAST to listOf(
+                        builder[LangList.SA]!![FuncList.HandleUnicode]!!, UAST::dataToIAST
+                    ),
+
+                    Scheme.GU to listOf(
+                        builder[LangList.GU]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.GU]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.OR to listOf(
+                        builder[LangList.OR]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.OR]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TA to listOf(
+                        builder[LangList.TA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TE to listOf(
+                        builder[LangList.TE]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TE]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.KN to listOf(
+                        builder[LangList.KN]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.KN]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.ML to listOf(
+                        builder[LangList.ML]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.ML]!![FuncList.DataFunction]!!
+                    )
+                ),
+
+                Scheme.DEVANĀGARĪ to mapOf(
+                    Scheme.UAST to listOf(UAST::devanāgarīToUAST),
+
+                    Scheme.IAST to listOf(
+                        UAST::devanāgarīToUAST, builder[LangList.SA]!![FuncList.HandleUnicode]!!, UAST::dataToIAST
+                    ),
+
+                    Scheme.GU to listOf(
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.GU]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.GU]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.OR to listOf(
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.OR]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.OR]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.KN to listOf(
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.KN]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.KN]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TE to listOf(
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TE]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TE]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TA to listOf(
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.ML to listOf(
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.ML]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.ML]!![FuncList.DataFunction]!!
+                    )
+                ),
+
+                Scheme.SLP to mapOf(
+                    Scheme.IAST to listOf(UAST::SLPToIAST),
+
+                    Scheme.UAST to listOf(UAST::SLPToIAST, UAST::IASTToUAST),
+
+                    Scheme.DEVANĀGARĪ to listOf(
+                        UAST::SLPToIAST,
+                        UAST::IASTToUAST,
+                        builder[LangList.SA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.SA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.GU to listOf(
+                        UAST::SLPToIAST,
+                        UAST::IASTToUAST,
+                        builder[LangList.GU]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.GU]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.OR to listOf(
+                        UAST::SLPToIAST,
+                        UAST::IASTToUAST,
+                        builder[LangList.OR]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.OR]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.KN to listOf(
+                        UAST::SLPToIAST,
+                        UAST::IASTToUAST,
+                        builder[LangList.KN]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.KN]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TA to listOf(
+                        UAST::SLPToIAST,
+                        UAST::IASTToUAST,
+                        builder[LangList.TA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TE to listOf(
+                        UAST::SLPToIAST,
+                        UAST::IASTToUAST,
+                        builder[LangList.TE]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TE]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.ML to listOf(
+                        UAST::SLPToIAST,
+                        UAST::IASTToUAST,
+                        builder[LangList.ML]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.ML]!![FuncList.DataFunction]!!
+                    )
+                ),
+
+                Scheme.IAST to mapOf(
+                    Scheme.UAST to listOf(UAST::IASTToUAST),
+
+                    Scheme.DEVANĀGARĪ to listOf(
+                        UAST::IASTToUAST,
+                        builder[LangList.SA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.SA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.GU to listOf(
+                        UAST::IASTToUAST,
+                        builder[LangList.GU]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.GU]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.OR to listOf(
+                        UAST::IASTToUAST,
+                        builder[LangList.OR]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.OR]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.ML to listOf(
+                        UAST::IASTToUAST,
+                        builder[LangList.ML]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.ML]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TA to listOf(
+                        UAST::IASTToUAST,
+                        builder[LangList.TA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.KN to listOf(
+                        UAST::IASTToUAST,
+                        builder[LangList.KN]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.KN]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TE to listOf(
+                        UAST::IASTToUAST,
+                        builder[LangList.TE]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TE]!![FuncList.DataFunction]!!
+                    )
+                ),
+
+                Scheme.GU to mapOf(
+                    Scheme.DEVANĀGARĪ to listOf(
+                        builder[LangList.GU]!![FuncList.ScriptToDevanāgarī]!!
+                    ),
+
+                    Scheme.UAST to listOf(
+                        builder[LangList.GU]!![FuncList.ScriptToDevanāgarī]!!, UAST::devanāgarīToUAST
+                    ),
+
+                    Scheme.IAST to listOf(
+                        builder[LangList.GU]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.SA]!![FuncList.HandleUnicode]!!,
+                        UAST::dataToIAST
+                    ),
+
+                    Scheme.OR to listOf(
+                        builder[LangList.GU]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.OR]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.OR]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.KN to listOf(
+                        builder[LangList.GU]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.KN]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.KN]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TE to listOf(
+                        builder[LangList.GU]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TE]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TE]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TA to listOf(
+                        builder[LangList.GU]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.ML to listOf(
+                        builder[LangList.GU]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.ML]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.ML]!![FuncList.DataFunction]!!
+                    )
+                ),
+
+                Scheme.ML to mapOf(
+                    Scheme.DEVANĀGARĪ to listOf(
+                        builder[LangList.ML]!![FuncList.ScriptToDevanāgarī]!!
+                    ),
+
+                    Scheme.UAST to listOf(
+                        builder[LangList.ML]!![FuncList.ScriptToDevanāgarī]!!, UAST::devanāgarīToUAST
+                    ),
+
+                    Scheme.IAST to listOf(
+                        builder[LangList.ML]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.SA]!![FuncList.HandleUnicode]!!,
+                        UAST::dataToIAST
+                    ),
+
+                    Scheme.OR to listOf(
+                        builder[LangList.ML]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.OR]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.OR]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.KN to listOf(
+                        builder[LangList.ML]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.KN]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.KN]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TE to listOf(
+                        builder[LangList.ML]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TE]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TE]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TA to listOf(
+                        builder[LangList.ML]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.GU to listOf(
+                        builder[LangList.ML]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.GU]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.GU]!![FuncList.DataFunction]!!
+                    )
+                ),
+
+                Scheme.OR to mapOf(
+                    Scheme.DEVANĀGARĪ to listOf(
+                        builder[LangList.OR]!![FuncList.ScriptToDevanāgarī]!!
+                    ),
+
+                    Scheme.UAST to listOf(
+                        builder[LangList.OR]!![FuncList.ScriptToDevanāgarī]!!, UAST::devanāgarīToUAST
+                    ),
+
+                    Scheme.IAST to listOf(
+                        builder[LangList.OR]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.SA]!![FuncList.HandleUnicode]!!,
+                        UAST::dataToIAST
+                    ),
+
+                    Scheme.ML to listOf(
+                        builder[LangList.OR]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.ML]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.ML]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.KN to listOf(
+                        builder[LangList.OR]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.KN]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.KN]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TE to listOf(
+                        builder[LangList.OR]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TE]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TE]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TA to listOf(
+                        builder[LangList.OR]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.GU to listOf(
+                        builder[LangList.OR]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.GU]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.GU]!![FuncList.DataFunction]!!
+                    )
+                ),
+
+                Scheme.KN to mapOf(
+                    Scheme.DEVANĀGARĪ to listOf(
+                        builder[LangList.KN]!![FuncList.ScriptToDevanāgarī]!!
+                    ),
+
+                    Scheme.UAST to listOf(
+                        builder[LangList.KN]!![FuncList.ScriptToDevanāgarī]!!, UAST::devanāgarīToUAST
+                    ),
+
+                    Scheme.IAST to listOf(
+                        builder[LangList.KN]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.SA]!![FuncList.HandleUnicode]!!,
+                        UAST::dataToIAST
+                    ),
+
+                    Scheme.ML to listOf(
+                        builder[LangList.KN]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.ML]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.ML]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.OR to listOf(
+                        builder[LangList.KN]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.OR]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.OR]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TE to listOf(
+                        builder[LangList.KN]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TE]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TE]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TA to listOf(
+                        builder[LangList.KN]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.GU to listOf(
+                        builder[LangList.KN]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.GU]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.GU]!![FuncList.DataFunction]!!
+                    )
+                ),
+
+                Scheme.TA to mapOf(
+                    Scheme.DEVANĀGARĪ to listOf(
+                        builder[LangList.TA]!![FuncList.ScriptToDevanāgarī]!!
+                    ),
+
+                    Scheme.UAST to listOf(
+                        builder[LangList.TA]!![FuncList.ScriptToDevanāgarī]!!, UAST::devanāgarīToUAST
+                    ),
+
+                    Scheme.IAST to listOf(
+                        builder[LangList.TA]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.SA]!![FuncList.HandleUnicode]!!,
+                        UAST::dataToIAST
+                    ),
+
+                    Scheme.ML to listOf(
+                        builder[LangList.TA]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.ML]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.ML]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.OR to listOf(
+                        builder[LangList.TA]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.OR]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.OR]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TE to listOf(
+                        builder[LangList.TA]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TE]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TE]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.KN to listOf(
+                        builder[LangList.TA]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.KN]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.KN]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.GU to listOf(
+                        builder[LangList.TA]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.GU]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.GU]!![FuncList.DataFunction]!!
+                    )
+                ),
+
+                Scheme.TE to mapOf(
+                    Scheme.DEVANĀGARĪ to listOf(
+                        builder[LangList.TE]!![FuncList.ScriptToDevanāgarī]!!
+                    ),
+
+                    Scheme.UAST to listOf(
+                        builder[LangList.TE]!![FuncList.ScriptToDevanāgarī]!!, UAST::devanāgarīToUAST
+                    ),
+
+                    Scheme.IAST to listOf(
+                        builder[LangList.TE]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.SA]!![FuncList.HandleUnicode]!!,
+                        UAST::dataToIAST
+                    ),
+
+                    Scheme.ML to listOf(
+                        builder[LangList.TE]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.ML]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.ML]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.OR to listOf(
+                        builder[LangList.TE]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.OR]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.OR]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.TA to listOf(
+                        builder[LangList.TE]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.TA]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.TA]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.KN to listOf(
+                        builder[LangList.TE]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.KN]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.KN]!![FuncList.DataFunction]!!
+                    ),
+
+                    Scheme.GU to listOf(
+                        builder[LangList.TE]!![FuncList.ScriptToDevanāgarī]!!,
+                        UAST::devanāgarīToUAST,
+                        builder[LangList.GU]!![FuncList.HandleUnicode]!!,
+                        builder[LangList.GU]!![FuncList.DataFunction]!!
+                    )
+                )
             )
         }
 
@@ -1051,11 +882,11 @@ class UAST {
         }
 
         private fun dataToIAST(data: String): String {
-            val data = Normalizer.normalize(data, Normalizer.Form.NFC)
+            val andy = Normalizer.normalize(data, Normalizer.Form.NFC)
                 .replace("[\\[\\]{}^~@#$%&*_;.<>\\n\\v\\t\\r\\f]".toRegex(), "")
             val ans = mutableListOf<String>()
 
-            for (split in data.split("\\\\")) {
+            for (split in andy.split("\\\\")) {
                 if (split == "ॐ") {
                     ans.add("oṃ")
                     continue
@@ -1200,10 +1031,10 @@ class UAST {
         }
 
         private fun IASTToUAST(data: String): String {
-            val data =
+            val andy =
                 Normalizer.normalize(data, Normalizer.Form.NFC).replace("[\\[\\]{}^~@#$%&*\\-_;<>]".toRegex(), "")
 
-            val str = data.map { it.toString() }.toList()
+            val str = andy.map { it.toString() }.toList()
 
             val arr = mutableListOf<String>()
             val saDict = charDict[LangList.SA]!!

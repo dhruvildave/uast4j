@@ -55,6 +55,9 @@ fun main(args: Array<String>) {
     }
 
     val transforms = UAST.convertor[from]?.get(to) ?: listOf()
+    require(transforms.isNotEmpty()) {
+        "unknown combination ${from}-${to}"
+    }
 
     println("`from`: $from")
     println("`to`: $to")

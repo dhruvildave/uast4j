@@ -1,6 +1,6 @@
 package dev.uast
 
-val unicodeMap = mapOf<String, String>(
+val unicodeMap: Map<String, String> = mapOf(
     "a" to "ā",
     "i" to "ī",
     "u" to "ū",
@@ -23,11 +23,11 @@ val unicodeMap = mapOf<String, String>(
     "au" to "ã"
 )
 
-val unAspiratedConstants = setOf<String>("b", "c", "d", "g", "j", "k", "p", "t", "ḍ", "ṭ")
+val unAspiratedConstants: Set<String> = setOf("b", "c", "d", "g", "j", "k", "p", "t", "ḍ", "ṭ")
 
-val allowedSymbols = setOf<String>(",", "?", "!", "\"", "-", ":", "(", ")", "=", "|")
+val allowedSymbols: Set<String> = setOf(",", "?", "!", "\"", "-", ":", "(", ")", "=", "|")
 
-val iastAllowed = setOf<String>(
+val iastAllowed: Set<String> = setOf(
     "।",
     "॥",
     "ऽ",
@@ -96,7 +96,7 @@ val iastAllowed = setOf<String>(
     "ḻ"
 )
 
-val iastDataDict = mapOf<String, String>(
+val iastDataDict: Map<String, String> = mapOf(
     "०" to "0",
     "१" to "1",
     "२" to "2",
@@ -131,7 +131,7 @@ val iastDataDict = mapOf<String, String>(
     "ã" to "au"
 )
 
-val devanāgarīDataDict = mapOf<String, String>(
+val devanāgarīDataDict: Map<String, String> = mapOf(
     "क" to "k",
     "ख" to "kh",
     "ग" to "g",
@@ -214,7 +214,7 @@ val devanāgarīDataDict = mapOf<String, String>(
     "९" to "\\/9/\\"
 )
 
-val slpDataDict = mapOf<String, String>(
+val slpDataDict: Map<String, String> = mapOf(
     "a" to "a",
     "A" to "ā",
     "i" to "i",
@@ -270,11 +270,13 @@ val slpDataDict = mapOf<String, String>(
     "~" to "ã"
 )
 
-val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
+val charDict: Map<LangList, Map<LangMap, Map<String, String>>> = mapOf(
     LangList.GU to mapOf(
         LangMap.MISC to mapOf(
             "।" to ".", "॥" to "..", "ऽ" to "'", "ॐ" to "om"
-        ), LangMap.NUMBERS to mapOf(
+        ),
+
+        LangMap.NUMBERS to mapOf(
             "૦" to "0",
             "૧" to "1",
             "૨" to "2",
@@ -285,7 +287,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "૭" to "7",
             "૮" to "8",
             "૯" to "9"
-        ), LangMap.VOWELS to mapOf(
+        ),
+
+        LangMap.VOWELS to mapOf(
             "a" to "અ",
             "ā" to "આ",
             "i" to "ઇ",
@@ -297,7 +301,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ai" to "ઐ",
             "o" to "ઓ",
             "au" to "ઔ"
-        ), LangMap.VOWELSIGNS to mapOf(
+        ),
+
+        LangMap.VOWELSIGNS to mapOf(
             "a" to "",
             "ā" to "ા",
             "i" to "િ",
@@ -313,7 +319,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ḥ" to "ઃ",
             "ã" to "ઁ",
             "-" to "્"
-        ), LangMap.CONSONANTS to mapOf(
+        ),
+
+        LangMap.CONSONANTS to mapOf(
             "k" to "ક",
             "kh" to "ખ",
             "g" to "ગ",
@@ -349,10 +357,14 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "h" to "હ",
             "ḻ" to "ળ"
         )
-    ), LangList.TA to mapOf(
+    ),
+
+    LangList.TA to mapOf(
         LangMap.MISC to mapOf(
             "।" to ".", "॥" to "..", "𑌽" to "'", "𑍐" to "om"
-        ), LangMap.NUMBERS to mapOf(
+        ),
+
+        LangMap.NUMBERS to mapOf(
             "௦" to "0",
             "௧" to "1",
             "௨" to "2",
@@ -363,7 +375,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "௭" to "7",
             "௮" to "8",
             "௯" to "9"
-        ), LangMap.VOWELS to mapOf(
+        ),
+
+        LangMap.VOWELS to mapOf(
             "a" to "𑌅",
             "ā" to "𑌆",
             "i" to "𑌇",
@@ -378,7 +392,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ai" to "𑌐",
             "o" to "𑌓",
             "au" to "𑌔"
-        ), LangMap.VOWELSIGNS to mapOf(
+        ),
+
+        LangMap.VOWELSIGNS to mapOf(
             "a" to "",
             "ā" to "𑌾",
             "i" to "𑌿",
@@ -397,7 +413,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ḥ" to "𑌃",
             "ã" to "𑌁",
             "-" to "𑍍"
-        ), LangMap.CONSONANTS to mapOf(
+        ),
+
+        LangMap.CONSONANTS to mapOf(
             "k" to "𑌕",
             "kh" to "𑌖",
             "g" to "𑌗",
@@ -433,10 +451,14 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "h" to "𑌹",
             "ḻ" to "𑌳"
         )
-    ), LangList.ML to mapOf(
+    ),
+
+    LangList.ML to mapOf(
         LangMap.MISC to mapOf(
             "।" to ".", "॥" to "..", "ഽ" to "'", "ഓം" to "om"
-        ), LangMap.NUMBERS to mapOf(
+        ),
+
+        LangMap.NUMBERS to mapOf(
             "൦" to "0",
             "൧" to "1",
             "൨" to "2",
@@ -447,7 +469,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "൭" to "7",
             "൮" to "8",
             "൯" to "9"
-        ), LangMap.VOWELS to mapOf(
+        ),
+
+        LangMap.VOWELS to mapOf(
             "a" to "അ",
             "ā" to "ആ",
             "i" to "ഇ",
@@ -462,7 +486,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ai" to "ഐ",
             "o" to "ഒ",
             "au" to "ഔ"
-        ), LangMap.VOWELSIGNS to mapOf(
+        ),
+
+        LangMap.VOWELSIGNS to mapOf(
             "a" to "",
             "ā" to "ാ",
             "i" to "ി",
@@ -481,7 +507,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ḥ" to "ഃ",
             "ã" to "ഁ",
             "-" to "്"
-        ), LangMap.CONSONANTS to mapOf(
+        ),
+
+        LangMap.CONSONANTS to mapOf(
             "k" to "ക",
             "kh" to "ഖ",
             "g" to "ഗ",
@@ -517,10 +545,14 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "h" to "ഹ",
             "ḻ" to "ള"
         )
-    ), LangList.TE to mapOf(
+    ),
+
+    LangList.TE to mapOf(
         LangMap.MISC to mapOf(
             "।" to ".", "॥" to "..", "ఽ" to "'", "ఓం" to "om"
-        ), LangMap.NUMBERS to mapOf(
+        ),
+
+        LangMap.NUMBERS to mapOf(
             "౦" to "0",
             "౧" to "1",
             "౨" to "2",
@@ -531,7 +563,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "౭" to "7",
             "౮" to "8",
             "౯" to "9"
-        ), LangMap.VOWELS to mapOf(
+        ),
+
+        LangMap.VOWELS to mapOf(
             "a" to "అ",
             "ā" to "ఆ",
             "i" to "ఇ",
@@ -546,7 +580,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ai" to "ఐ",
             "o" to "ఒ",
             "au" to "ఔ"
-        ), LangMap.VOWELSIGNS to mapOf(
+        ),
+
+        LangMap.VOWELSIGNS to mapOf(
             "a" to "",
             "ā" to "ా",
             "i" to "ి",
@@ -565,7 +601,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ḥ" to "ః",
             "ã" to "ఁ",
             "-" to "్"
-        ), LangMap.CONSONANTS to mapOf(
+        ),
+
+        LangMap.CONSONANTS to mapOf(
             "k" to "క",
             "kh" to "ఖ",
             "g" to "గ",
@@ -601,10 +639,13 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "h" to "హ",
             "ḻ" to "ళ"
         )
-    ), LangList.KN to mapOf(
+    ),
+
+    LangList.KN to mapOf(
         LangMap.MISC to mapOf(
             "।" to ".", "॥" to "..", "ಽ" to "'", "ಓಂ" to "om"
         ),
+
         LangMap.NUMBERS to mapOf(
             "೦" to "0",
             "೧" to "1",
@@ -617,6 +658,7 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "೮" to "8",
             "೯" to "9"
         ),
+
         LangMap.VOWELS to mapOf(
             "a" to "ಅ",
             "ā" to "ಆ",
@@ -633,7 +675,8 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "o" to "ಒ",
             "au" to "ಔ"
         ),
-        LangMap.VOWELSIGNS to mapOf<String, String>(
+
+        LangMap.VOWELSIGNS to mapOf(
             "a" to "",
             "ā" to "ಾ",
             "i" to "ಿ",
@@ -653,6 +696,7 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ã" to "ಁ",
             "-" to "್"
         ),
+
         LangMap.CONSONANTS to mapOf(
             "k" to "ಕ",
             "kh" to "ಖ",
@@ -692,9 +736,11 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
     ),
 
     LangList.OR to mapOf(
-        LangMap.MISC to mapOf<String, String>(
+        LangMap.MISC to mapOf(
             "।" to ".", "॥" to "..", "ଽ" to "'", "ଓଁ" to "om"
-        ), LangMap.NUMBERS to mapOf<String, String>(
+        ),
+
+        LangMap.NUMBERS to mapOf(
             "୦" to "0",
             "୧" to "1",
             "୨" to "2",
@@ -705,7 +751,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "୭" to "7",
             "୮" to "8",
             "୯" to "9"
-        ), LangMap.VOWELS to mapOf<String, String>(
+        ),
+
+        LangMap.VOWELS to mapOf(
             "a" to "ଅ",
             "ā" to "ଆ",
             "i" to "ଇ",
@@ -720,7 +768,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ai" to "ଐ",
             "o" to "ଓ",
             "au" to "ଔ"
-        ), LangMap.VOWELSIGNS to mapOf<String, String>(
+        ),
+
+        LangMap.VOWELSIGNS to mapOf(
             "a" to "",
             "ā" to "ା",
             "i" to "ି",
@@ -739,7 +789,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ḥ" to "ଃ",
             "ã" to "ଁ",
             "-" to "୍"
-        ), LangMap.CONSONANTS to mapOf<String, String>(
+        ),
+
+        LangMap.CONSONANTS to mapOf(
             "k" to "କ",
             "kh" to "ଖ",
             "g" to "ଗ",
@@ -775,10 +827,14 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "h" to "ହ",
             "ḻ" to "ଳ"
         )
-    ), LangList.SA to mapOf(
+    ),
+
+    LangList.SA to mapOf(
         LangMap.MISC to mapOf(
             "।" to ".", "॥" to "..", "ऽ" to "'", "ॐ" to "om"
-        ), LangMap.NUMBERS to mapOf(
+        ),
+
+        LangMap.NUMBERS to mapOf(
             "०" to "0",
             "१" to "1",
             "२" to "2",
@@ -789,7 +845,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "७" to "7",
             "८" to "8",
             "९" to "9"
-        ), LangMap.VOWELS to mapOf(
+        ),
+
+        LangMap.VOWELS to mapOf(
             "a" to "अ",
             "ā" to "आ",
             "i" to "इ",
@@ -804,7 +862,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ai" to "ऐ",
             "o" to "ओ",
             "au" to "औ"
-        ), LangMap.VOWELSIGNS to mapOf(
+        ),
+
+        LangMap.VOWELSIGNS to mapOf(
             "a" to "",
             "ā" to "ा",
             "i" to "ि",
@@ -823,7 +883,9 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
             "ḥ" to "ः",
             "ã" to "ँ",
             "-" to "्"
-        ), LangMap.CONSONANTS to mapOf(
+        ),
+
+        LangMap.CONSONANTS to mapOf(
             "k" to "क",
             "kh" to "ख",
             "g" to "ग",
@@ -862,7 +924,7 @@ val charDict = mapOf<LangList, Map<LangMap, Map<String, String>>>(
     )
 )
 
-val scripts = mapOf<LangList, Map<String, String>>(
+val scripts: Map<LangList, Map<String, String>> = mapOf(
     LangList.GU to mapOf(
         "।" to "।",
         "॥" to "॥",
@@ -943,7 +1005,9 @@ val scripts = mapOf<LangList, Map<String, String>>(
         "સ" to "स",
         "હ" to "ह",
         "ળ" to "ळ"
-    ), LangList.OR to mapOf(
+    ),
+
+    LangList.OR to mapOf(
         "।" to "।",
         "॥" to "॥",
         "ଽ" to "ऽ",
@@ -1023,7 +1087,9 @@ val scripts = mapOf<LangList, Map<String, String>>(
         "ସ" to "स",
         "ହ" to "ह",
         "ଳ" to "ळ"
-    ), LangList.KN to mapOf(
+    ),
+
+    LangList.KN to mapOf(
         "।" to "।",
         "॥" to "॥",
         "ಽ" to "ऽ",
@@ -1103,7 +1169,9 @@ val scripts = mapOf<LangList, Map<String, String>>(
         "ಸ" to "स",
         "ಹ" to "ह",
         "ಳ" to "ळ"
-    ), LangList.TE to mapOf(
+    ),
+
+    LangList.TE to mapOf(
         "।" to "।",
         "॥" to "॥",
         "ఽ" to "ऽ",
@@ -1183,7 +1251,9 @@ val scripts = mapOf<LangList, Map<String, String>>(
         "స" to "स",
         "హ" to "ह",
         "ళ" to "ळ"
-    ), LangList.ML to mapOf(
+    ),
+
+    LangList.ML to mapOf(
         "।" to "।",
         "॥" to "॥",
         "ഽ" to "ऽ",
@@ -1263,7 +1333,9 @@ val scripts = mapOf<LangList, Map<String, String>>(
         "സ" to "स",
         "ഹ" to "ह",
         "ള" to "ळ"
-    ), LangList.TA to mapOf(
+    ),
+
+    LangList.TA to mapOf(
         "।" to "।",
         "॥" to "॥",
         "𑌽" to "ऽ",
@@ -1343,5 +1415,7 @@ val scripts = mapOf<LangList, Map<String, String>>(
         "𑌸" to "स",
         "𑌹" to "ह",
         "𑌳" to "ळ"
-    ), LangList.SA to mapOf()
+    ),
+
+    LangList.SA to mapOf()
 )
