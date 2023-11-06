@@ -54,12 +54,13 @@ fun main(args: Array<String>) {
         }
     }
 
-    val transforms = UAST.convertor?.get(from)?.get(to) ?: listOf()
+    val transforms = UAST.convertor[from]?.get(to) ?: listOf()
 
     println("`from`: $from")
     println("`to`: $to")
+
     while (true) {
-        val x = readlnOrNull() ?: break
+        val x = readlnOrNull() ?: return
 
         for (l in x.split("\n")) {
             val s = l.split(" ")
@@ -67,7 +68,7 @@ fun main(args: Array<String>) {
             for (w in s) {
                 var i = w
                 for (f in transforms) {
-                    i = f.apply(i)
+                    i = f(i)
                 }
                 arr.add(i)
             }
