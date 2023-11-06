@@ -39,7 +39,3 @@ tasks.withType<Jar> {
         }
     })
 }
-
-dependencies {
-    implementation(kotlin("stdlib"))
-}
