@@ -583,7 +583,7 @@ class UAST {
             return fun(data: String): String {
                 val ans = mutableListOf<String>()
 
-                for (split in data.split("\\\\")) {
+                for (split in data.split("\\")) {
                     if (obj[LangMap.MISC]?.contains(split) == true || obj[LangMap.MISC]?.contains(split) == true) {
                         ans.add(split)
                         continue
@@ -666,7 +666,7 @@ class UAST {
             val langDict = unicodeMap.toMutableMap()
             langDict.putAll(
                 when (langList) {
-                    LangList.SA -> mapOf<String, String>(
+                    LangList.SA -> mapOf(
                         "0" to "०",
                         "1" to "१",
                         "2" to "२",
@@ -681,7 +681,7 @@ class UAST {
                         "'" to "ऽ"
                     )
 
-                    LangList.GU -> mapOf<String, String>(
+                    LangList.GU -> mapOf(
                         "0" to "૦",
                         "1" to "૧",
                         "2" to "૨",
@@ -696,7 +696,7 @@ class UAST {
                         "'" to "ઽ"
                     )
 
-                    LangList.KN -> mapOf<String, String>(
+                    LangList.KN -> mapOf(
                         "0" to "೦",
                         "1" to "೧",
                         "2" to "೨",
@@ -711,7 +711,7 @@ class UAST {
                         "'" to "ಽ"
                     )
 
-                    LangList.TE -> mapOf<String, String>(
+                    LangList.TE -> mapOf(
                         "0" to "౦",
                         "1" to "౧",
                         "2" to "౨",
@@ -726,7 +726,7 @@ class UAST {
                         "om" to "ఓం"
                     )
 
-                    LangList.ML -> mapOf<String, String>(
+                    LangList.ML -> mapOf(
                         "0" to "൦",
                         "1" to "൧",
                         "2" to "൨",
@@ -741,7 +741,7 @@ class UAST {
                         "om" to "ഓം"
                     )
 
-                    LangList.TA -> mapOf<String, String>(
+                    LangList.TA -> mapOf(
                         "0" to "௦",
                         "1" to "௧",
                         "2" to "௨",
@@ -756,7 +756,7 @@ class UAST {
                         "om" to "𑍐"
                     )
 
-                    LangList.OR -> mapOf<String, String>(
+                    LangList.OR -> mapOf(
                         "0" to "୦",
                         "1" to "୧",
                         "2" to "୨",
