@@ -8,7 +8,7 @@ To install this program, you will need to install Java 21
 After that, just run
 
 ```bash
-./gradlew -i clean jar
+make
 ```
 
 To run,
