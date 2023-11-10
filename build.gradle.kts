@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+
 plugins {
     idea
     application
@@ -13,6 +15,9 @@ repositories {
 
 kotlin {
     jvmToolchain(21)
+    compilerOptions {
+        languageVersion.set(KotlinVersion.KOTLIN_2_1)
+    }
 }
 
 application {
