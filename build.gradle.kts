@@ -1,7 +1,7 @@
 plugins {
     idea
     application
-    kotlin("jvm")
+    kotlin("jvm") version "1.9.20"
 }
 
 group = "dev.uast"
@@ -11,14 +11,12 @@ repositories {
     mavenCentral()
 }
 
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
-    }
+kotlin {
+    jvmToolchain(21)
 }
 
 application {
-    mainClass.set("dev.uast.MainKt")
+    mainClass.set("${group}.MainKt")
 }
 
 tasks.withType<Jar> {
