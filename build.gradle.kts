@@ -8,6 +8,7 @@ plugins {
 
 group = "dev.uast"
 version = "latest"
+val mainClassName = "${group}.MainKt"
 
 repositories {
     mavenCentral()
@@ -21,12 +22,12 @@ kotlin {
 }
 
 application {
-    mainClass.set("${group}.MainKt")
+    mainClass.set(mainClassName)
 }
 
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-class"] = "dev.uast.MainKt"
+        attributes["Main-class"] = mainClassName
     }
 
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
