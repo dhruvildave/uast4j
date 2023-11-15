@@ -43,3 +43,7 @@ tasks.withType<Jar> {
         }
     })
 }
+
+tasks.withType<JavaCompile>().configureEach {
+    options.compilerArgs = listOf("--enable-preview")
+}
