@@ -273,7 +273,7 @@ val slpDataDict: Map<String, String> = mapOf(
 val charDict: Map<LangList, Map<LangMap, Map<String, String>>> = mapOf(
     LangList.GU to mapOf(
         LangMap.MISC to mapOf(
-            "।" to ".", "॥" to "..", "ऽ" to "'", "ॐ" to "om"
+            "।" to ".", "॥" to "..", "ऽ" to "'", "ૐ" to "om"
         ),
 
         LangMap.NUMBERS to mapOf(
@@ -929,7 +929,7 @@ val scripts: Map<LangList, Map<String, String>> = mapOf(
         "।" to "।",
         "॥" to "॥",
         "ઽ" to "ऽ",
-        "ॐ" to "ओम्",
+        "ૐ" to "ओम्",
         "૦" to "०",
         "૧" to "१",
         "૨" to "२",
