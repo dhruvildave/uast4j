@@ -584,12 +584,17 @@ class UAST {
                 val ans = mutableListOf<String>()
 
                 for (split in data.split("\\")) {
-                    if (obj[LangMap.MISC]?.contains(split) == true || obj[LangMap.MISC]?.contains(split) == true) {
+                    if (split in obj[LangMap.MISC]!!) {
                         ans.add(split)
                         continue
                     }
 
-                    if (obj[LangMap.VOWELS]?.contains(split) == true) {
+                    if (split in obj[LangMap.NUMBERS]!!) {
+                        ans.add(obj[LangMap.NUMBERS]!![split]!!)
+                        continue
+                    }
+
+                    if (split in obj[LangMap.VOWELS]!!) {
                         ans.add(obj[LangMap.VOWELS]!![split]!!)
                         continue
                     }
@@ -637,7 +642,7 @@ class UAST {
                             continue
                         }
 
-                        if (obj[LangMap.CONSONANTS]?.contains(curr) == true) {
+                        if (curr in obj[LangMap.CONSONANTS]!!) {
                             arr.add(obj[LangMap.CONSONANTS]!![curr]!!)
                         }
 
@@ -650,7 +655,7 @@ class UAST {
                             i++
                         }
 
-                        if (obj[LangMap.VOWELSIGNS]?.contains(vowel) == true) {
+                        if (vowel in obj[LangMap.VOWELSIGNS]!!) {
                             arr.add(obj[LangMap.VOWELSIGNS]!![vowel]!!)
                         }
                     }
@@ -968,7 +973,7 @@ class UAST {
                         continue
                     }
 
-                    if (unAspiratedConstants.contains(curr) && next == "h") {
+                    if (curr in unAspiratedConstants && next == "h") {
                         val last = if (i + 2 < str.size) {
                             str[i + 2]
                         } else {
@@ -1050,7 +1055,7 @@ class UAST {
                 }
 
                 if (curr in saDict[LangMap.CONSONANTS]!!) {
-                    if (unAspiratedConstants.contains(curr)) {
+                    if (curr in unAspiratedConstants) {
                         if (next == "a" && (i + 2 < str.size && str[i + 2] == "h")) {
                             arr.add("${curr}\\")
                             i += 2

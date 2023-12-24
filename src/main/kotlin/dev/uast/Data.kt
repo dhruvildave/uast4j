@@ -202,16 +202,16 @@ val devanāgarīDataDict: Map<String, String> = mapOf(
     "।" to "\\/./\\",
     "॥" to "\\/../\\",
     "ॐ" to "\\/om/\\",
-    "०" to "\\/0/\\",
-    "१" to "\\/1/\\",
-    "२" to "\\/2/\\",
-    "३" to "\\/3/\\",
-    "४" to "\\/4/\\",
-    "५" to "\\/5/\\",
-    "६" to "\\/6/\\",
-    "७" to "\\/7/\\",
-    "८" to "\\/8/\\",
-    "९" to "\\/9/\\"
+    "०" to "\\0\\",
+    "१" to "\\1\\",
+    "२" to "\\2\\",
+    "३" to "\\3\\",
+    "४" to "\\4\\",
+    "५" to "\\5\\",
+    "६" to "\\6\\",
+    "७" to "\\7\\",
+    "८" to "\\8\\",
+    "९" to "\\9\\"
 )
 
 val slpDataDict: Map<String, String> = mapOf(
@@ -277,16 +277,16 @@ val charDict: Map<LangList, Map<LangMap, Map<String, String>>> = mapOf(
         ),
 
         LangMap.NUMBERS to mapOf(
-            "૦" to "0",
-            "૧" to "1",
-            "૨" to "2",
-            "૩" to "3",
-            "૪" to "4",
-            "૫" to "5",
-            "૬" to "6",
-            "૭" to "7",
-            "૮" to "8",
-            "૯" to "9"
+            "0" to "૦",
+            "1" to "૧",
+            "2" to "૨",
+            "3" to "૩",
+            "4" to "૪",
+            "5" to "૫",
+            "6" to "૬",
+            "7" to "૭",
+            "8" to "૮",
+            "9" to "૯"
         ),
 
         LangMap.VOWELS to mapOf(
@@ -365,16 +365,16 @@ val charDict: Map<LangList, Map<LangMap, Map<String, String>>> = mapOf(
         ),
 
         LangMap.NUMBERS to mapOf(
-            "௦" to "0",
-            "௧" to "1",
-            "௨" to "2",
-            "௩" to "3",
-            "௪" to "4",
-            "௫" to "5",
-            "௬" to "6",
-            "௭" to "7",
-            "௮" to "8",
-            "௯" to "9"
+            "0" to "௦",
+            "1" to "௧",
+            "2" to "௨",
+            "3" to "௩",
+            "4" to "௪",
+            "5" to "௫",
+            "6" to "௬",
+            "7" to "௭",
+            "8" to "௮",
+            "9" to "௯"
         ),
 
         LangMap.VOWELS to mapOf(
@@ -459,16 +459,16 @@ val charDict: Map<LangList, Map<LangMap, Map<String, String>>> = mapOf(
         ),
 
         LangMap.NUMBERS to mapOf(
-            "൦" to "0",
-            "൧" to "1",
-            "൨" to "2",
-            "൩" to "3",
-            "൪" to "4",
-            "൫" to "5",
-            "൬" to "6",
-            "൭" to "7",
-            "൮" to "8",
-            "൯" to "9"
+            "0" to "൦",
+            "1" to "൧",
+            "2" to "൨",
+            "3" to "൩",
+            "4" to "൪",
+            "5" to "൫",
+            "6" to "൬",
+            "7" to "൭",
+            "8" to "൮",
+            "9" to "൯"
         ),
 
         LangMap.VOWELS to mapOf(
@@ -553,16 +553,16 @@ val charDict: Map<LangList, Map<LangMap, Map<String, String>>> = mapOf(
         ),
 
         LangMap.NUMBERS to mapOf(
-            "౦" to "0",
-            "౧" to "1",
-            "౨" to "2",
-            "౩" to "3",
-            "౪" to "4",
-            "౫" to "5",
-            "౬" to "6",
-            "౭" to "7",
-            "౮" to "8",
-            "౯" to "9"
+            "0" to "౦",
+            "1" to "౧",
+            "2" to "౨",
+            "3" to "౩",
+            "4" to "౪",
+            "5" to "౫",
+            "6" to "౬",
+            "7" to "౭",
+            "8" to "౮",
+            "9" to "౯"
         ),
 
         LangMap.VOWELS to mapOf(
@@ -647,16 +647,16 @@ val charDict: Map<LangList, Map<LangMap, Map<String, String>>> = mapOf(
         ),
 
         LangMap.NUMBERS to mapOf(
-            "೦" to "0",
-            "೧" to "1",
-            "೨" to "2",
-            "೩" to "3",
-            "೪" to "4",
-            "೫" to "5",
-            "೬" to "6",
-            "೭" to "7",
-            "೮" to "8",
-            "೯" to "9"
+            "0" to "೦",
+            "1" to "೧",
+            "2" to "೨",
+            "3" to "೩",
+            "4" to "೪",
+            "5" to "೫",
+            "6" to "೬",
+            "7" to "೭",
+            "8" to "೮",
+            "9" to "೯"
         ),
 
         LangMap.VOWELS to mapOf(
@@ -741,16 +741,16 @@ val charDict: Map<LangList, Map<LangMap, Map<String, String>>> = mapOf(
         ),
 
         LangMap.NUMBERS to mapOf(
-            "୦" to "0",
-            "୧" to "1",
-            "୨" to "2",
-            "୩" to "3",
-            "୪" to "4",
-            "୫" to "5",
-            "୬" to "6",
-            "୭" to "7",
-            "୮" to "8",
-            "୯" to "9"
+            "0" to "୦",
+            "1" to "୧",
+            "2" to "୨",
+            "3" to "୩",
+            "4" to "୪",
+            "5" to "୫",
+            "6" to "୬",
+            "7" to "୭",
+            "8" to "୮",
+            "9" to "୯"
         ),
 
         LangMap.VOWELS to mapOf(
@@ -835,16 +835,16 @@ val charDict: Map<LangList, Map<LangMap, Map<String, String>>> = mapOf(
         ),
 
         LangMap.NUMBERS to mapOf(
-            "०" to "0",
-            "१" to "1",
-            "२" to "2",
-            "३" to "3",
-            "४" to "4",
-            "५" to "5",
-            "६" to "6",
-            "७" to "7",
-            "८" to "8",
-            "९" to "9"
+            "0" to "०",
+            "1" to "१",
+            "2" to "२",
+            "3" to "३",
+            "4" to "४",
+            "5" to "५",
+            "6" to "६",
+            "7" to "७",
+            "8" to "८",
+            "9" to "९"
         ),
 
         LangMap.VOWELS to mapOf(
