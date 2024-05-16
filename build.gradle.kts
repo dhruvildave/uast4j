@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 plugins {
     idea
     application
-    kotlin("jvm") version "1.9.22"
+    kotlin("jvm") version "1.9.24"
 }
 
 group = "dev.uast"
@@ -42,8 +42,4 @@ tasks.withType<Jar> {
             zipTree(it)
         }
     })
-}
-
-tasks.withType<JavaCompile>().configureEach {
-    options.compilerArgs = listOf("--enable-preview")
 }
