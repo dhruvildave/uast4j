@@ -23,9 +23,31 @@ val unicodeMap: Map<String, String> = mapOf(
     "au" to "ã"
 )
 
-val unAspiratedConstants: Set<String> = setOf("b", "c", "d", "g", "j", "k", "p", "t", "ḍ", "ṭ")
+val unAspiratedConstants: Set<String> = setOf(
+    "b",
+    "c",
+    "d",
+    "g",
+    "j",
+    "k",
+    "p",
+    "t",
+    "ḍ",
+    "ṭ"
+)
 
-val allowedSymbols: Set<String> = setOf(",", "?", "!", "\"", "-", ":", "(", ")", "=", "|")
+val allowedSymbols: Set<String> = setOf(
+    ",",
+    "?",
+    "!",
+    "\"",
+    "-",
+    ":",
+    "(",
+    ")",
+    "=",
+    "|"
+)
 
 val iastAllowed: Set<String> = setOf(
     "।",
