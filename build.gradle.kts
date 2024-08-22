@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 plugins {
     idea
     application
-    kotlin("jvm") version "2.0.0"
+    kotlin("jvm") version "2.0.20"
 }
 
 group = "dev.uast"
