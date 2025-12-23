@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 plugins {
     idea
     application
-    kotlin("jvm") version "2.1.21"
+    kotlin("jvm") version "2.3.0"
 }
 
 group = "dev.uast"
@@ -15,9 +15,9 @@ repositories {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(25)
     compilerOptions {
-        languageVersion.set(KotlinVersion.KOTLIN_2_1)
+        languageVersion.set(KotlinVersion.KOTLIN_2_3)
     }
 }
 
